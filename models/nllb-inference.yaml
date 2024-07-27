@@ -1,0 +1,30 @@
+transforms: [sentencepiece, prefix, suffix]
+# nllb-200 specific prefixing and suffixing
+# src_prefix: "dyu_Latn"
+# tgt_prefix: "fra_Latn"
+# # tgt_file_prefix: true
+# src_suffix: "</s>"
+# tgt_suffix: ""
+
+src_prefix: "</s> dyu_Latn"
+tgt_prefix: "fra_Latn"
+src_suffix: ""
+tgt_suffix: ""
+
+#### Subword
+src_subword_model: "/root/projects/zindi/nmt_train/models/flores200_sacrebleu_tokenizer_spm2.model"
+tgt_subword_model: "/root/projects/zindi/nmt_train/models/flores200_sacrebleu_tokenizer_spm2.model"
+src_subword_nbest: 1
+src_subword_alpha: 0.0
+tgt_subword_nbest: 1
+tgt_subword_alpha: 0.0
+# Model info
+model: "/root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3_step_1000.pt"
+# Inference
+max_length: 120
+gpu: 0
+batch_type: tokens
+batch_size: 8192
+fp16:
+beam_size: 1
+report_time: true
