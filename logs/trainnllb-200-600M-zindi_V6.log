@@ -1,0 +1,112 @@
+[2024-07-28 06:06:48,945 INFO] Parsed 1 corpora from -data.
+[2024-07-28 06:06:48,945 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-zindi_V5_step_2000.pt
+[2024-07-28 06:06:50,589 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-28 06:06:50,589 INFO] Get special vocabs from Transforms: {'src': ['</s>', '', 'dyu_Latn', ''], 'tgt': ['', 'fra_Latn', '']}.
+[2024-07-28 06:06:50,621 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-28 06:06:50,621 INFO] The decoder start token is: </s>
+[2024-07-28 06:06:50,623 INFO] Over-ride model option set to true - use with care
+[2024-07-28 06:06:50,623 INFO] Option: config , value: /root/zindi-nmt/models/config2.yaml overriding model: config2.yaml
+[2024-07-28 06:06:50,624 INFO] Option: data , value: {'corpus_1': {'path_src': '/root/zindi-nmt/data/all_dyu.txt', 'path_tgt': '/root/zindi-nmt/data/all_fr.txt', 'transforms': ['sentencepiece', 'prefix', 'suffix', 'filtertoolong'], 'weight': 10, 'src_prefix': '</s> dyu_Latn', 'tgt_prefix': 'fra_Latn', 'src_suffix': '', 'tgt_suffix': '', 'path_align': None}} overriding model: {'corpus_1': {'path_src': '/root/projects/zindi/nmt_train/data/all_dyu.txt', 'path_tgt': '/root/projects/zindi/nmt_train/data/all_fr.txt', 'transforms': ['sentencepiece', 'prefix', 'suffix', 'filtertoolong'], 'weight': 10, 'src_prefix': '</s> dyu_Latn', 'tgt_prefix': 'fra_Latn', 'src_suffix': '', 'tgt_suffix': '', 'path_align': None}}
+[2024-07-28 06:06:50,624 INFO] Option: save_data , value: /root/zindi-nmt/train/ overriding model: /root/projects/zindi/nmt_train/train
+[2024-07-28 06:06:50,624 INFO] Option: src_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: /root/projects/zindi/nmt_train/models/dictionary3.txt
+[2024-07-28 06:06:50,624 INFO] Option: tgt_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: /root/projects/zindi/nmt_train/models/dictionary3.txt
+[2024-07-28 06:06:50,624 INFO] Option: src_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: /root/projects/zindi/nmt_train/models/flores200_sacrebleu_tokenizer_spm3.model
+[2024-07-28 06:06:50,624 INFO] Option: tgt_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: /root/projects/zindi/nmt_train/models/flores200_sacrebleu_tokenizer_spm3.model
+[2024-07-28 06:06:50,624 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V6 overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V5
+[2024-07-28 06:06:50,624 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V5_step_2000.pt overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V4_step_1000.pt
+[2024-07-28 06:06:50,624 INFO] Option: early_stopping , value: 0 overriding model: 10
+[2024-07-28 06:06:50,624 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V6.log overriding model: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V5.log
+[2024-07-28 06:06:50,624 INFO] Building model...
+[2024-07-28 06:06:55,384 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-28 06:06:55,384 INFO] Non quantized layer compute is fp16
+[2024-07-28 06:06:55,384 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-28 06:06:55,517 INFO] src: 0 new tokens
+[2024-07-28 06:06:55,765 INFO] tgt: 0 new tokens
+[2024-07-28 06:06:56,634 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-23): 24 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-23): 24 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-28 06:06:56,644 INFO] encoder: 326900736
+[2024-07-28 06:06:56,644 INFO] decoder: 403146189
+[2024-07-28 06:06:56,644 INFO] * number of parameters: 730046925
+[2024-07-28 06:06:56,647 INFO] Trainable parameters = {'torch.float32': 730046925, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-28 06:06:56,647 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-28 06:06:56,647 INFO]  * src vocab size = 24013
+[2024-07-28 06:06:56,647 INFO]  * tgt vocab size = 24013
+[2024-07-28 06:06:56,924 INFO] Starting training on GPU: [0]
+[2024-07-28 06:06:56,924 INFO] Start training loop without validation...
+[2024-07-28 06:06:56,924 INFO] Scoring with: None
