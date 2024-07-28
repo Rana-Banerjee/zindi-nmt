@@ -110,3 +110,8 @@
 [2024-07-28 06:06:56,924 INFO] Starting training on GPU: [0]
 [2024-07-28 06:06:56,924 INFO] Start training loop without validation...
 [2024-07-28 06:06:56,924 INFO] Scoring with: None
+[2024-07-28 06:07:29,237 INFO] Step 10/10000; acc: 46.6; ppl:  67.6; xent: 4.2; lr: 0.01031; sents:    8189; bsz: 1114/1359/102; 2758/3364 tok/s;     32 sec;
+[2024-07-28 06:07:58,110 INFO] Step 20/10000; acc: 38.4; ppl:  95.7; xent: 4.6; lr: 0.01969; sents:    4383; bsz: 1748/2115/55; 4844/5860 tok/s;     61 sec;
+[2024-07-28 06:08:27,077 INFO] Step 30/10000; acc: 38.7; ppl:  93.8; xent: 4.5; lr: 0.02906; sents:    4733; bsz: 1704/2068/59; 4705/5711 tok/s;     90 sec;
+[2024-07-28 06:08:52,397 INFO] Step 40/10000; acc: 44.9; ppl:  73.5; xent: 4.3; lr: 0.03844; sents:    7631; bsz: 1151/1426/95; 3637/4506 tok/s;    115 sec;
+[2024-07-28 06:09:22,027 INFO] Step 50/10000; acc: 37.8; ppl:  98.2; xent: 4.6; lr: 0.04781; sents:    3823; bsz: 1788/2144/48; 4829/5789 tok/s;    145 sec;

@@ -1,0 +1,688 @@
+[2024-07-27 11:56:21,997 INFO] Parsed 1 corpora from -data.
+[2024-07-27 11:56:21,997 INFO] Loading checkpoint from /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt
+[2024-07-27 11:56:24,863 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-27 11:56:24,864 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', 'dyu_Latn', ''], 'tgt': ['', 'fra_Latn', '']}.
+[2024-07-27 11:56:25,428 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'an', '▁n', '▁m', '▁t', '▁k']
+[2024-07-27 11:56:25,430 INFO] The decoder start token is: </s>
+[2024-07-27 11:56:25,493 INFO] Over-ride model option set to true - use with care
+[2024-07-27 11:56:25,494 INFO] Option: save_model , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3 overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2
+[2024-07-27 11:56:25,494 INFO] Option: train_from , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-onmt.pt
+[2024-07-27 11:56:25,494 INFO] Option: log_file , value: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V3.log overriding model: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V2.log
+[2024-07-27 11:56:25,494 INFO] Building model...
+[2024-07-27 11:56:34,529 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-27 11:56:34,529 INFO] Non quantized layer compute is fp16
+[2024-07-27 11:56:34,529 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-27 11:56:36,625 INFO] src: 0 new tokens
+[2024-07-27 11:56:41,197 INFO] tgt: 0 new tokens
+[2024-07-27 11:56:42,761 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-23): 24 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-23): 24 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=270987, bias=True)
+)
+[2024-07-27 11:56:42,770 INFO] encoder: 579802112
+[2024-07-27 11:56:42,770 INFO] decoder: 403393163
+[2024-07-27 11:56:42,770 INFO] * number of parameters: 983195275
+[2024-07-27 11:56:42,772 INFO] Trainable parameters = {'torch.float32': 983195275, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 11:56:42,772 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 11:56:42,772 INFO]  * src vocab size = 270987
+[2024-07-27 11:56:42,772 INFO]  * tgt vocab size = 270987
+[2024-07-27 11:56:43,333 INFO] Starting training on GPU: [0]
+[2024-07-27 11:56:43,333 INFO] Start training loop without validation...
+[2024-07-27 11:56:43,334 INFO] Scoring with: None
+[2024-07-27 11:57:10,699 INFO] Step 10/10000; acc: 44.5; ppl: 175.1; xent: 5.2; lr: 0.01031; sents:    3040; bsz:  402/ 459/38; 1176/1341 tok/s;     27 sec;
+[2024-07-27 11:57:28,522 INFO] Step 20/10000; acc: 45.9; ppl: 156.8; xent: 5.1; lr: 0.01969; sents:    2938; bsz:  386/ 442/37; 1733/1984 tok/s;     45 sec;
+[2024-07-27 11:57:46,533 INFO] Step 30/10000; acc: 46.2; ppl: 151.0; xent: 5.0; lr: 0.02906; sents:    2970; bsz:  397/ 454/37; 1763/2017 tok/s;     63 sec;
+[2024-07-27 11:58:05,158 INFO] Step 40/10000; acc: 34.0; ppl: 324.2; xent: 5.8; lr: 0.03844; sents:    1630; bsz:  578/ 632/20; 2485/2716 tok/s;     82 sec;
+[2024-07-27 11:58:23,933 INFO] Step 50/10000; acc: 33.8; ppl: 337.1; xent: 5.8; lr: 0.04781; sents:    1377; bsz:  642/ 679/17; 2736/2892 tok/s;    101 sec;
+[2024-07-27 11:58:42,651 INFO] Step 60/10000; acc: 34.0; ppl: 333.5; xent: 5.8; lr: 0.05719; sents:    1383; bsz:  634/ 683/17; 2712/2917 tok/s;    119 sec;
+[2024-07-27 11:59:01,389 INFO] Step 70/10000; acc: 33.3; ppl: 339.0; xent: 5.8; lr: 0.06656; sents:    1356; bsz:  625/ 679/17; 2666/2897 tok/s;    138 sec;
+[2024-07-27 11:59:19,891 INFO] Step 80/10000; acc: 38.2; ppl: 246.1; xent: 5.5; lr: 0.07594; sents:    2100; bsz:  570/ 605/26; 2466/2618 tok/s;    157 sec;
+[2024-07-27 11:59:37,694 INFO] Step 90/10000; acc: 44.4; ppl: 175.1; xent: 5.2; lr: 0.08531; sents:    2851; bsz:  379/ 439/36; 1703/1972 tok/s;    174 sec;
+[2024-07-27 11:59:55,654 INFO] Step 100/10000; acc: 45.1; ppl: 163.5; xent: 5.1; lr: 0.09328; sents:    2850; bsz:  380/ 443/36; 1691/1972 tok/s;    192 sec;
+[2024-07-27 12:00:13,779 INFO] Step 110/10000; acc: 42.5; ppl: 187.7; xent: 5.2; lr: 0.08898; sents:    2635; bsz:  449/ 511/33; 1983/2257 tok/s;    210 sec;
+[2024-07-27 12:00:32,265 INFO] Step 120/10000; acc: 33.4; ppl: 334.6; xent: 5.8; lr: 0.08523; sents:    1429; bsz:  600/ 644/18; 2598/2788 tok/s;    229 sec;
+[2024-07-27 12:00:51,008 INFO] Step 130/10000; acc: 34.7; ppl: 322.0; xent: 5.8; lr: 0.08191; sents:    1397; bsz:  636/ 675/17; 2716/2881 tok/s;    248 sec;
+[2024-07-27 12:01:09,824 INFO] Step 140/10000; acc: 34.2; ppl: 321.8; xent: 5.8; lr: 0.07895; sents:    1370; bsz:  629/ 679/17; 2676/2885 tok/s;    266 sec;
+[2024-07-27 12:01:28,493 INFO] Step 150/10000; acc: 34.6; ppl: 308.5; xent: 5.7; lr: 0.07629; sents:    1378; bsz:  631/ 674/17; 2705/2887 tok/s;    285 sec;
+[2024-07-27 12:01:46,657 INFO] Step 160/10000; acc: 41.8; ppl: 200.3; xent: 5.3; lr: 0.07389; sents:    2597; bsz:  482/ 537/32; 2124/2367 tok/s;    303 sec;
+[2024-07-27 12:02:04,449 INFO] Step 170/10000; acc: 45.3; ppl: 158.6; xent: 5.1; lr: 0.07169; sents:    2851; bsz:  393/ 447/36; 1768/2010 tok/s;    321 sec;
+[2024-07-27 12:02:22,194 INFO] Step 180/10000; acc: 46.2; ppl: 147.1; xent: 5.0; lr: 0.06968; sents:    2927; bsz:  384/ 447/37; 1730/2016 tok/s;    339 sec;
+[2024-07-27 12:02:40,454 INFO] Step 190/10000; acc: 39.1; ppl: 227.6; xent: 5.4; lr: 0.06784; sents:    2191; bsz:  502/ 562/27; 2198/2463 tok/s;    357 sec;
+[2024-07-27 12:02:59,096 INFO] Step 200/10000; acc: 34.2; ppl: 317.3; xent: 5.8; lr: 0.06613; sents:    1348; bsz:  627/ 671/17; 2692/2879 tok/s;    376 sec;
+[2024-07-27 12:03:17,676 INFO] Step 210/10000; acc: 35.4; ppl: 298.1; xent: 5.7; lr: 0.06454; sents:    1342; bsz:  635/ 670/17; 2734/2883 tok/s;    394 sec;
+[2024-07-27 12:03:36,171 INFO] Step 220/10000; acc: 34.4; ppl: 307.1; xent: 5.7; lr: 0.06306; sents:    1368; bsz:  641/ 693/17; 2772/2998 tok/s;    413 sec;
+[2024-07-27 12:03:54,629 INFO] Step 230/10000; acc: 36.4; ppl: 271.5; xent: 5.6; lr: 0.06168; sents:    1573; bsz:  594/ 641/20; 2576/2780 tok/s;    431 sec;
+[2024-07-27 12:04:12,641 INFO] Step 240/10000; acc: 43.0; ppl: 185.3; xent: 5.2; lr: 0.06039; sents:    2811; bsz:  434/ 485/35; 1927/2153 tok/s;    449 sec;
+[2024-07-27 12:04:30,280 INFO] Step 250/10000; acc: 46.8; ppl: 141.0; xent: 4.9; lr: 0.05917; sents:    2920; bsz:  382/ 441/36; 1734/1998 tok/s;    467 sec;
+[2024-07-27 12:04:47,944 INFO] Step 260/10000; acc: 45.6; ppl: 150.2; xent: 5.0; lr: 0.05803; sents:    2775; bsz:  391/ 450/35; 1772/2036 tok/s;    485 sec;
+[2024-07-27 12:05:06,236 INFO] Step 270/10000; acc: 36.8; ppl: 257.3; xent: 5.6; lr: 0.05695; sents:    1787; bsz:  552/ 610/22; 2414/2668 tok/s;    503 sec;
+[2024-07-27 12:05:24,598 INFO] Step 280/10000; acc: 35.2; ppl: 299.3; xent: 5.7; lr: 0.05593; sents:    1397; bsz:  634/ 677/17; 2762/2948 tok/s;    521 sec;
+[2024-07-27 12:05:43,020 INFO] Step 290/10000; acc: 35.2; ppl: 292.2; xent: 5.7; lr: 0.05496; sents:    1350; bsz:  645/ 681/17; 2802/2956 tok/s;    540 sec;
+[2024-07-27 12:06:01,350 INFO] Step 300/10000; acc: 35.0; ppl: 289.6; xent: 5.7; lr: 0.05404; sents:    1385; bsz:  617/ 670/17; 2692/2923 tok/s;    558 sec;
+[2024-07-27 12:06:19,520 INFO] Step 310/10000; acc: 38.7; ppl: 236.1; xent: 5.5; lr: 0.05316; sents:    1974; bsz:  562/ 604/25; 2476/2660 tok/s;    576 sec;
+[2024-07-27 12:06:37,174 INFO] Step 320/10000; acc: 45.4; ppl: 155.3; xent: 5.0; lr: 0.05233; sents:    2908; bsz:  406/ 461/36; 1840/2091 tok/s;    594 sec;
+[2024-07-27 12:06:54,581 INFO] Step 330/10000; acc: 45.8; ppl: 150.1; xent: 5.0; lr: 0.05153; sents:    2791; bsz:  370/ 433/35; 1699/1990 tok/s;    611 sec;
+[2024-07-27 12:07:12,444 INFO] Step 340/10000; acc: 44.0; ppl: 163.2; xent: 5.1; lr: 0.05077; sents:    2712; bsz:  444/ 503/34; 1989/2253 tok/s;    629 sec;
+[2024-07-27 12:07:30,745 INFO] Step 350/10000; acc: 35.7; ppl: 275.5; xent: 5.6; lr: 0.05004; sents:    1476; bsz:  599/ 650/18; 2616/2842 tok/s;    647 sec;
+[2024-07-27 12:07:49,185 INFO] Step 360/10000; acc: 35.2; ppl: 298.5; xent: 5.7; lr: 0.04934; sents:    1392; bsz:  641/ 678/17; 2780/2943 tok/s;    666 sec;
+[2024-07-27 12:08:07,692 INFO] Step 370/10000; acc: 35.3; ppl: 287.4; xent: 5.7; lr: 0.04867; sents:    1363; bsz:  635/ 682/17; 2744/2947 tok/s;    684 sec;
+[2024-07-27 12:08:26,295 INFO] Step 380/10000; acc: 34.9; ppl: 287.1; xent: 5.7; lr: 0.04803; sents:    1368; bsz:  637/ 686/17; 2738/2949 tok/s;    703 sec;
+[2024-07-27 12:08:44,528 INFO] Step 390/10000; acc: 41.9; ppl: 193.5; xent: 5.3; lr: 0.04741; sents:    2571; bsz:  493/ 549/32; 2163/2407 tok/s;    721 sec;
+[2024-07-27 12:09:02,315 INFO] Step 400/10000; acc: 46.2; ppl: 142.6; xent: 5.0; lr: 0.04682; sents:    2904; bsz:  403/ 450/36; 1812/2026 tok/s;    739 sec;
+[2024-07-27 12:09:19,985 INFO] Step 410/10000; acc: 46.5; ppl: 141.3; xent: 5.0; lr: 0.04624; sents:    2851; bsz:  379/ 439/36; 1714/1989 tok/s;    757 sec;
+[2024-07-27 12:09:38,274 INFO] Step 420/10000; acc: 40.1; ppl: 209.9; xent: 5.3; lr: 0.04569; sents:    2224; bsz:  497/ 557/28; 2172/2436 tok/s;    775 sec;
+[2024-07-27 12:09:56,621 INFO] Step 430/10000; acc: 35.6; ppl: 282.6; xent: 5.6; lr: 0.04516; sents:    1385; bsz:  627/ 672/17; 2735/2928 tok/s;    793 sec;
+[2024-07-27 12:10:14,940 INFO] Step 440/10000; acc: 35.9; ppl: 278.6; xent: 5.6; lr: 0.04464; sents:    1386; bsz:  635/ 677/17; 2774/2956 tok/s;    812 sec;
+[2024-07-27 12:10:33,329 INFO] Step 450/10000; acc: 35.1; ppl: 289.5; xent: 5.7; lr: 0.04415; sents:    1355; bsz:  636/ 686/17; 2769/2984 tok/s;    830 sec;
+[2024-07-27 12:10:51,619 INFO] Step 460/10000; acc: 37.4; ppl: 247.1; xent: 5.5; lr: 0.04366; sents:    1689; bsz:  599/ 645/21; 2618/2822 tok/s;    848 sec;
+[2024-07-27 12:11:09,283 INFO] Step 470/10000; acc: 44.2; ppl: 165.4; xent: 5.1; lr: 0.04320; sents:    2712; bsz:  432/ 480/34; 1954/2175 tok/s;    866 sec;
+[2024-07-27 12:11:26,730 INFO] Step 480/10000; acc: 46.0; ppl: 147.5; xent: 5.0; lr: 0.04275; sents:    2799; bsz:  374/ 433/35; 1715/1988 tok/s;    883 sec;
+[2024-07-27 12:11:44,455 INFO] Step 490/10000; acc: 46.0; ppl: 141.5; xent: 5.0; lr: 0.04231; sents:    2804; bsz:  412/ 470/35; 1860/2120 tok/s;    901 sec;
+[2024-07-27 12:11:57,045 INFO] Parsed 1 corpora from -data.
+[2024-07-27 12:11:57,045 INFO] Loading checkpoint from /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt
+[2024-07-27 12:11:59,909 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-27 12:11:59,909 INFO] Get special vocabs from Transforms: {'src': ['', '', 'dyu_Latn', '</s>'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-27 12:12:00,477 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'an', '▁n', '▁m', '▁t', '▁k']
+[2024-07-27 12:12:00,479 INFO] The decoder start token is: </s>
+[2024-07-27 12:12:00,542 INFO] Over-ride model option set to true - use with care
+[2024-07-27 12:12:00,542 INFO] Option: self_attn_type , value: scaled-dot overriding model: scaled-dot-flash
+[2024-07-27 12:12:00,542 INFO] Option: save_model , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3 overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2
+[2024-07-27 12:12:00,542 INFO] Option: train_from , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-onmt.pt
+[2024-07-27 12:12:00,542 INFO] Option: log_file , value: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V3.log overriding model: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V2.log
+[2024-07-27 12:12:00,542 INFO] Building model...
+[2024-07-27 12:12:09,671 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-27 12:12:09,671 INFO] Non quantized layer compute is fp16
+[2024-07-27 12:12:09,672 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-27 12:12:11,746 INFO] src: 0 new tokens
+[2024-07-27 12:12:16,226 INFO] tgt: 0 new tokens
+[2024-07-27 12:12:17,794 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-23): 24 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-23): 24 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=270987, bias=True)
+)
+[2024-07-27 12:12:17,802 INFO] encoder: 579802112
+[2024-07-27 12:12:17,802 INFO] decoder: 403393163
+[2024-07-27 12:12:17,802 INFO] * number of parameters: 983195275
+[2024-07-27 12:12:17,805 INFO] Trainable parameters = {'torch.float32': 983195275, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 12:12:17,805 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 12:12:17,805 INFO]  * src vocab size = 270987
+[2024-07-27 12:12:17,805 INFO]  * tgt vocab size = 270987
+[2024-07-27 12:12:18,366 INFO] Starting training on GPU: [0]
+[2024-07-27 12:12:18,367 INFO] Start training loop without validation...
+[2024-07-27 12:12:18,367 INFO] Scoring with: None
+[2024-07-27 12:12:46,887 INFO] Step 10/10000; acc: 44.4; ppl: 175.8; xent: 5.2; lr: 0.01031; sents:    3040; bsz:  402/ 459/38; 1129/1287 tok/s;     29 sec;
+[2024-07-27 12:13:09,486 INFO] Parsed 1 corpora from -data.
+[2024-07-27 12:13:09,486 INFO] Loading checkpoint from /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt
+[2024-07-27 12:13:12,350 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-27 12:13:12,350 INFO] Get special vocabs from Transforms: {'src': ['', '', '</s>', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-27 12:13:12,913 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'an', '▁n', '▁m', '▁t', '▁k']
+[2024-07-27 12:13:12,915 INFO] The decoder start token is: </s>
+[2024-07-27 12:13:12,978 INFO] Over-ride model option set to true - use with care
+[2024-07-27 12:13:12,978 INFO] Option: self_attn_type , value: scaled-dot overriding model: scaled-dot-flash
+[2024-07-27 12:13:12,978 INFO] Option: save_model , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3 overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2
+[2024-07-27 12:13:12,978 INFO] Option: save_checkpoint_steps , value: 10 overriding model: 500
+[2024-07-27 12:13:12,978 INFO] Option: train_from , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-onmt.pt
+[2024-07-27 12:13:12,978 INFO] Option: train_steps , value: 20 overriding model: 10000
+[2024-07-27 12:13:12,978 INFO] Option: log_file , value: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V3.log overriding model: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V2.log
+[2024-07-27 12:13:12,978 INFO] Building model...
+[2024-07-27 12:13:22,096 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-27 12:13:22,096 INFO] Non quantized layer compute is fp16
+[2024-07-27 12:13:22,096 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-27 12:13:24,209 INFO] src: 0 new tokens
+[2024-07-27 12:13:28,808 INFO] tgt: 0 new tokens
+[2024-07-27 12:13:30,350 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-23): 24 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-23): 24 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=270987, bias=True)
+)
+[2024-07-27 12:13:30,358 INFO] encoder: 579802112
+[2024-07-27 12:13:30,358 INFO] decoder: 403393163
+[2024-07-27 12:13:30,359 INFO] * number of parameters: 983195275
+[2024-07-27 12:13:30,361 INFO] Trainable parameters = {'torch.float32': 983195275, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 12:13:30,361 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 12:13:30,361 INFO]  * src vocab size = 270987
+[2024-07-27 12:13:30,361 INFO]  * tgt vocab size = 270987
+[2024-07-27 12:13:30,923 INFO] Starting training on GPU: [0]
+[2024-07-27 12:13:30,923 INFO] Start training loop without validation...
+[2024-07-27 12:13:30,923 INFO] Scoring with: None
+[2024-07-27 12:13:59,540 INFO] Step 10/   20; acc: 44.4; ppl: 175.8; xent: 5.2; lr: 0.01031; sents:    3040; bsz:  402/ 459/38; 1125/1282 tok/s;     29 sec;
+[2024-07-27 12:13:59,620 INFO] Saving checkpoint /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3_step_10.pt
+[2024-07-27 12:14:23,875 INFO] Step 20/   20; acc: 45.7; ppl: 157.7; xent: 5.1; lr: 0.01969; sents:    2938; bsz:  386/ 442/37; 1269/1453 tok/s;     53 sec;
+[2024-07-27 12:14:23,952 INFO] Saving checkpoint /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3_step_20.pt
+[2024-07-27 12:26:04,906 INFO] Parsed 1 corpora from -data.
+[2024-07-27 12:26:04,906 INFO] Loading checkpoint from /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt
+[2024-07-27 12:26:07,748 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-27 12:26:07,748 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-27 12:26:08,327 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'an', '▁n', '▁m', '▁t', '▁k']
+[2024-07-27 12:26:08,329 INFO] The decoder start token is: </s>
+[2024-07-27 12:26:08,405 INFO] Over-ride model option set to true - use with care
+[2024-07-27 12:26:08,405 INFO] Option: self_attn_type , value: scaled-dot overriding model: scaled-dot-flash
+[2024-07-27 12:26:08,405 INFO] Option: save_model , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3 overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2
+[2024-07-27 12:26:08,406 INFO] Option: save_checkpoint_steps , value: 10 overriding model: 500
+[2024-07-27 12:26:08,406 INFO] Option: train_from , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-onmt.pt
+[2024-07-27 12:26:08,406 INFO] Option: train_steps , value: 20 overriding model: 10000
+[2024-07-27 12:26:08,406 INFO] Option: log_file , value: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V3.log overriding model: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V2.log
+[2024-07-27 12:26:08,406 INFO] Building model...
+[2024-07-27 12:26:17,493 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-27 12:26:17,493 INFO] Non quantized layer compute is fp16
+[2024-07-27 12:26:17,494 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-27 12:26:19,707 INFO] src: 0 new tokens
+[2024-07-27 12:26:24,301 INFO] tgt: 0 new tokens
+[2024-07-27 12:26:25,893 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-23): 24 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-23): 24 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=270987, bias=True)
+)
+[2024-07-27 12:26:25,901 INFO] encoder: 579802112
+[2024-07-27 12:26:25,901 INFO] decoder: 403393163
+[2024-07-27 12:26:25,901 INFO] * number of parameters: 983195275
+[2024-07-27 12:26:25,904 INFO] Trainable parameters = {'torch.float32': 983195275, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 12:26:25,904 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 12:26:25,904 INFO]  * src vocab size = 270987
+[2024-07-27 12:26:25,904 INFO]  * tgt vocab size = 270987
+[2024-07-27 12:26:26,493 INFO] Starting training on GPU: [0]
+[2024-07-27 12:26:26,493 INFO] Start training loop without validation...
+[2024-07-27 12:26:26,493 INFO] Scoring with: None
+[2024-07-27 12:26:54,907 INFO] Step 10/   20; acc: 44.4; ppl: 175.8; xent: 5.2; lr: 0.01031; sents:    3040; bsz:  402/ 459/38; 1133/1291 tok/s;     28 sec;
+[2024-07-27 12:26:54,987 INFO] Saving checkpoint /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3_step_10.pt
+[2024-07-27 12:27:19,129 INFO] Step 20/   20; acc: 45.7; ppl: 157.7; xent: 5.1; lr: 0.01969; sents:    2938; bsz:  386/ 442/37; 1275/1460 tok/s;     53 sec;
+[2024-07-27 12:27:19,206 INFO] Saving checkpoint /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3_step_20.pt
+[2024-07-27 12:28:38,492 INFO] Parsed 1 corpora from -data.
+[2024-07-27 12:28:38,492 INFO] Loading checkpoint from /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt
+[2024-07-27 12:28:41,311 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-27 12:28:41,311 INFO] Get special vocabs from Transforms: {'src': ['', '', 'dyu_Latn', '</s>'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-27 12:28:41,879 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'an', '▁n', '▁m', '▁t', '▁k']
+[2024-07-27 12:28:41,881 INFO] The decoder start token is: </s>
+[2024-07-27 12:28:41,946 INFO] Over-ride model option set to true - use with care
+[2024-07-27 12:28:41,946 INFO] Option: self_attn_type , value: scaled-dot overriding model: scaled-dot-flash
+[2024-07-27 12:28:41,946 INFO] Option: save_model , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3 overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2
+[2024-07-27 12:28:41,946 INFO] Option: save_checkpoint_steps , value: 1000 overriding model: 500
+[2024-07-27 12:28:41,947 INFO] Option: train_from , value: /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V2_step_500.pt overriding model: /root/projects/zindi/nmt_train/models/nllb-200-600M-onmt.pt
+[2024-07-27 12:28:41,947 INFO] Option: log_file , value: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V3.log overriding model: /root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V2.log
+[2024-07-27 12:28:41,947 INFO] Building model...
+[2024-07-27 12:28:51,046 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-27 12:28:51,046 INFO] Non quantized layer compute is fp16
+[2024-07-27 12:28:51,046 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-27 12:28:53,218 INFO] src: 0 new tokens
+[2024-07-27 12:28:57,828 INFO] tgt: 0 new tokens
+[2024-07-27 12:28:59,539 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-23): 24 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(270987, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-23): 24 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=270987, bias=True)
+)
+[2024-07-27 12:28:59,547 INFO] encoder: 579802112
+[2024-07-27 12:28:59,547 INFO] decoder: 403393163
+[2024-07-27 12:28:59,547 INFO] * number of parameters: 983195275
+[2024-07-27 12:28:59,550 INFO] Trainable parameters = {'torch.float32': 983195275, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 12:28:59,550 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-27 12:28:59,550 INFO]  * src vocab size = 270987
+[2024-07-27 12:28:59,550 INFO]  * tgt vocab size = 270987
+[2024-07-27 12:29:00,126 INFO] Starting training on GPU: [0]
+[2024-07-27 12:29:00,127 INFO] Start training loop without validation...
+[2024-07-27 12:29:00,127 INFO] Scoring with: None
+[2024-07-27 12:29:28,605 INFO] Step 10/10000; acc: 44.4; ppl: 175.8; xent: 5.2; lr: 0.01031; sents:    3040; bsz:  402/ 459/38; 1130/1288 tok/s;     28 sec;
+[2024-07-27 12:29:47,385 INFO] Step 20/10000; acc: 45.7; ppl: 157.7; xent: 5.1; lr: 0.01969; sents:    2938; bsz:  386/ 442/37; 1644/1883 tok/s;     47 sec;
+[2024-07-27 12:30:06,352 INFO] Step 30/10000; acc: 46.2; ppl: 152.4; xent: 5.0; lr: 0.02906; sents:    2970; bsz:  397/ 454/37; 1674/1915 tok/s;     66 sec;
+[2024-07-27 12:30:26,080 INFO] Step 40/10000; acc: 34.2; ppl: 317.1; xent: 5.8; lr: 0.03844; sents:    1630; bsz:  578/ 632/20; 2346/2565 tok/s;     86 sec;
+[2024-07-27 12:30:45,944 INFO] Step 50/10000; acc: 33.9; ppl: 332.6; xent: 5.8; lr: 0.04781; sents:    1377; bsz:  642/ 679/17; 2586/2734 tok/s;    106 sec;
+[2024-07-27 12:31:05,802 INFO] Step 60/10000; acc: 34.2; ppl: 331.7; xent: 5.8; lr: 0.05719; sents:    1383; bsz:  634/ 683/17; 2556/2750 tok/s;    126 sec;
+[2024-07-27 12:31:25,716 INFO] Step 70/10000; acc: 33.2; ppl: 334.8; xent: 5.8; lr: 0.06656; sents:    1356; bsz:  625/ 679/17; 2509/2726 tok/s;    146 sec;
+[2024-07-27 12:31:45,366 INFO] Step 80/10000; acc: 38.4; ppl: 245.0; xent: 5.5; lr: 0.07594; sents:    2100; bsz:  570/ 605/26; 2322/2465 tok/s;    165 sec;
+[2024-07-27 12:32:04,466 INFO] Step 90/10000; acc: 44.2; ppl: 177.2; xent: 5.2; lr: 0.08531; sents:    2851; bsz:  379/ 439/36; 1588/1838 tok/s;    184 sec;
+[2024-07-27 12:32:23,534 INFO] Step 100/10000; acc: 45.4; ppl: 163.7; xent: 5.1; lr: 0.09328; sents:    2850; bsz:  380/ 443/36; 1592/1857 tok/s;    203 sec;
+[2024-07-27 12:32:42,795 INFO] Step 110/10000; acc: 42.9; ppl: 181.1; xent: 5.2; lr: 0.08898; sents:    2635; bsz:  449/ 511/33; 1866/2124 tok/s;    223 sec;
+[2024-07-27 12:33:02,596 INFO] Step 120/10000; acc: 34.0; ppl: 320.4; xent: 5.8; lr: 0.08523; sents:    1429; bsz:  600/ 644/18; 2425/2603 tok/s;    242 sec;
+[2024-07-27 12:33:22,593 INFO] Step 130/10000; acc: 35.1; ppl: 314.4; xent: 5.8; lr: 0.08191; sents:    1397; bsz:  636/ 675/17; 2546/2701 tok/s;    262 sec;
+[2024-07-27 12:33:42,545 INFO] Step 140/10000; acc: 34.3; ppl: 317.6; xent: 5.8; lr: 0.07895; sents:    1370; bsz:  629/ 679/17; 2523/2721 tok/s;    282 sec;
+[2024-07-27 12:34:02,404 INFO] Step 150/10000; acc: 34.5; ppl: 306.8; xent: 5.7; lr: 0.07629; sents:    1378; bsz:  631/ 674/17; 2543/2714 tok/s;    302 sec;
+[2024-07-27 12:34:21,787 INFO] Step 160/10000; acc: 41.8; ppl: 197.9; xent: 5.3; lr: 0.07389; sents:    2597; bsz:  482/ 537/32; 1990/2218 tok/s;    322 sec;
+[2024-07-27 12:34:40,779 INFO] Step 170/10000; acc: 45.1; ppl: 159.0; xent: 5.1; lr: 0.07169; sents:    2851; bsz:  393/ 447/36; 1656/1883 tok/s;    341 sec;
+[2024-07-27 12:34:59,598 INFO] Step 180/10000; acc: 46.3; ppl: 145.6; xent: 5.0; lr: 0.06968; sents:    2927; bsz:  384/ 447/37; 1632/1901 tok/s;    359 sec;
+[2024-07-27 12:35:18,870 INFO] Step 190/10000; acc: 39.3; ppl: 224.8; xent: 5.4; lr: 0.06784; sents:    2191; bsz:  502/ 562/27; 2083/2334 tok/s;    379 sec;
+[2024-07-27 12:35:38,618 INFO] Step 200/10000; acc: 34.3; ppl: 311.9; xent: 5.7; lr: 0.06613; sents:    1348; bsz:  627/ 671/17; 2541/2718 tok/s;    398 sec;
+[2024-07-27 12:35:58,163 INFO] Step 210/10000; acc: 35.5; ppl: 293.8; xent: 5.7; lr: 0.06454; sents:    1342; bsz:  635/ 670/17; 2599/2740 tok/s;    418 sec;
+[2024-07-27 12:36:17,746 INFO] Step 220/10000; acc: 34.6; ppl: 304.3; xent: 5.7; lr: 0.06306; sents:    1368; bsz:  641/ 693/17; 2619/2832 tok/s;    438 sec;
+[2024-07-27 12:36:37,110 INFO] Step 230/10000; acc: 36.5; ppl: 268.0; xent: 5.6; lr: 0.06168; sents:    1573; bsz:  594/ 641/20; 2456/2650 tok/s;    457 sec;
+[2024-07-27 12:36:55,868 INFO] Step 240/10000; acc: 43.1; ppl: 183.4; xent: 5.2; lr: 0.06039; sents:    2811; bsz:  434/ 485/35; 1851/2067 tok/s;    476 sec;
+[2024-07-27 12:37:14,353 INFO] Step 250/10000; acc: 46.9; ppl: 137.9; xent: 4.9; lr: 0.05917; sents:    2920; bsz:  382/ 441/36; 1654/1907 tok/s;    494 sec;
+[2024-07-27 12:37:32,850 INFO] Step 260/10000; acc: 45.7; ppl: 148.6; xent: 5.0; lr: 0.05803; sents:    2775; bsz:  391/ 450/35; 1692/1945 tok/s;    513 sec;
+[2024-07-27 12:37:52,121 INFO] Step 270/10000; acc: 37.0; ppl: 254.1; xent: 5.5; lr: 0.05695; sents:    1787; bsz:  552/ 610/22; 2292/2533 tok/s;    532 sec;
+[2024-07-27 12:38:11,714 INFO] Step 280/10000; acc: 35.3; ppl: 295.6; xent: 5.7; lr: 0.05593; sents:    1397; bsz:  634/ 677/17; 2588/2763 tok/s;    552 sec;
+[2024-07-27 12:38:31,437 INFO] Step 290/10000; acc: 35.6; ppl: 287.0; xent: 5.7; lr: 0.05496; sents:    1350; bsz:  645/ 681/17; 2618/2761 tok/s;    571 sec;
+[2024-07-27 12:38:51,236 INFO] Step 300/10000; acc: 35.1; ppl: 287.1; xent: 5.7; lr: 0.05404; sents:    1385; bsz:  617/ 670/17; 2493/2706 tok/s;    591 sec;
+[2024-07-27 12:39:10,816 INFO] Step 310/10000; acc: 38.9; ppl: 232.9; xent: 5.5; lr: 0.05316; sents:    1974; bsz:  562/ 604/25; 2298/2468 tok/s;    611 sec;
+[2024-07-27 12:39:29,854 INFO] Step 320/10000; acc: 45.5; ppl: 151.9; xent: 5.0; lr: 0.05233; sents:    2908; bsz:  406/ 461/36; 1706/1939 tok/s;    630 sec;
+[2024-07-27 12:39:48,689 INFO] Step 330/10000; acc: 45.9; ppl: 148.5; xent: 5.0; lr: 0.05153; sents:    2791; bsz:  370/ 433/35; 1570/1839 tok/s;    649 sec;
+[2024-07-27 12:40:07,888 INFO] Step 340/10000; acc: 44.3; ppl: 160.6; xent: 5.1; lr: 0.05077; sents:    2712; bsz:  444/ 503/34; 1850/2096 tok/s;    668 sec;
+[2024-07-27 12:40:27,737 INFO] Step 350/10000; acc: 36.1; ppl: 271.4; xent: 5.6; lr: 0.05004; sents:    1476; bsz:  599/ 650/18; 2413/2621 tok/s;    688 sec;
+[2024-07-27 12:40:47,589 INFO] Step 360/10000; acc: 35.4; ppl: 293.4; xent: 5.7; lr: 0.04934; sents:    1392; bsz:  641/ 678/17; 2582/2733 tok/s;    707 sec;
+[2024-07-27 12:41:07,571 INFO] Step 370/10000; acc: 35.4; ppl: 282.8; xent: 5.6; lr: 0.04867; sents:    1363; bsz:  635/ 682/17; 2541/2729 tok/s;    727 sec;
+[2024-07-27 12:41:27,443 INFO] Step 380/10000; acc: 35.2; ppl: 281.1; xent: 5.6; lr: 0.04803; sents:    1368; bsz:  637/ 686/17; 2563/2761 tok/s;    747 sec;
+[2024-07-27 12:41:46,727 INFO] Step 390/10000; acc: 42.4; ppl: 190.0; xent: 5.2; lr: 0.04741; sents:    2571; bsz:  493/ 549/32; 2045/2276 tok/s;    767 sec;
+[2024-07-27 12:42:05,452 INFO] Step 400/10000; acc: 46.3; ppl: 139.9; xent: 4.9; lr: 0.04682; sents:    2904; bsz:  403/ 450/36; 1721/1924 tok/s;    785 sec;
+[2024-07-27 12:42:23,936 INFO] Step 410/10000; acc: 46.6; ppl: 138.5; xent: 4.9; lr: 0.04624; sents:    2851; bsz:  379/ 439/36; 1639/1901 tok/s;    804 sec;
+[2024-07-27 12:42:43,080 INFO] Step 420/10000; acc: 40.3; ppl: 204.8; xent: 5.3; lr: 0.04569; sents:    2224; bsz:  497/ 557/28; 2075/2327 tok/s;    823 sec;
+[2024-07-27 12:43:02,588 INFO] Step 430/10000; acc: 35.9; ppl: 275.4; xent: 5.6; lr: 0.04516; sents:    1385; bsz:  627/ 672/17; 2572/2754 tok/s;    842 sec;
+[2024-07-27 12:43:22,122 INFO] Step 440/10000; acc: 36.2; ppl: 271.6; xent: 5.6; lr: 0.04464; sents:    1386; bsz:  635/ 677/17; 2601/2772 tok/s;    862 sec;
+[2024-07-27 12:43:41,737 INFO] Step 450/10000; acc: 35.3; ppl: 279.8; xent: 5.6; lr: 0.04415; sents:    1355; bsz:  636/ 686/17; 2596/2797 tok/s;    882 sec;
+[2024-07-27 12:44:01,110 INFO] Step 460/10000; acc: 37.6; ppl: 241.0; xent: 5.5; lr: 0.04366; sents:    1689; bsz:  599/ 645/21; 2472/2664 tok/s;    901 sec;
+[2024-07-27 12:44:19,970 INFO] Step 470/10000; acc: 44.2; ppl: 162.9; xent: 5.1; lr: 0.04320; sents:    2712; bsz:  432/ 480/34; 1830/2037 tok/s;    920 sec;
+[2024-07-27 12:44:38,723 INFO] Step 480/10000; acc: 46.1; ppl: 145.4; xent: 5.0; lr: 0.04275; sents:    2799; bsz:  374/ 433/35; 1596/1849 tok/s;    939 sec;
+[2024-07-27 12:44:57,443 INFO] Step 490/10000; acc: 45.9; ppl: 139.3; xent: 4.9; lr: 0.04231; sents:    2804; bsz:  412/ 470/35; 1761/2008 tok/s;    957 sec;
+[2024-07-27 12:45:16,738 INFO] Step 500/10000; acc: 38.1; ppl: 230.7; xent: 5.4; lr: 0.04188; sents:    1855; bsz:  540/ 597/23; 2240/2474 tok/s;    977 sec;
+[2024-07-27 12:45:36,366 INFO] Step 510/10000; acc: 35.7; ppl: 277.7; xent: 5.6; lr: 0.04147; sents:    1377; bsz:  644/ 689/17; 2624/2806 tok/s;    996 sec;
+[2024-07-27 12:45:56,009 INFO] Step 520/10000; acc: 36.3; ppl: 267.6; xent: 5.6; lr: 0.04107; sents:    1383; bsz:  637/ 677/17; 2593/2758 tok/s;   1016 sec;
+[2024-07-27 12:46:15,530 INFO] Step 530/10000; acc: 35.5; ppl: 272.3; xent: 5.6; lr: 0.04068; sents:    1341; bsz:  630/ 675/17; 2580/2767 tok/s;   1035 sec;
+[2024-07-27 12:46:34,755 INFO] Step 540/10000; acc: 39.6; ppl: 214.4; xent: 5.4; lr: 0.04031; sents:    2028; bsz:  544/ 591/25; 2263/2460 tok/s;   1055 sec;
+[2024-07-27 12:46:53,469 INFO] Step 550/10000; acc: 45.3; ppl: 148.2; xent: 5.0; lr: 0.03994; sents:    2803; bsz:  415/ 465/35; 1774/1987 tok/s;   1073 sec;
+[2024-07-27 12:47:12,076 INFO] Step 560/10000; acc: 46.6; ppl: 140.6; xent: 4.9; lr: 0.03958; sents:    2872; bsz:  379/ 441/36; 1628/1897 tok/s;   1092 sec;
+[2024-07-27 12:47:30,860 INFO] Step 570/10000; acc: 43.8; ppl: 161.4; xent: 5.1; lr: 0.03923; sents:    2496; bsz:  425/ 487/31; 1809/2072 tok/s;   1111 sec;
+[2024-07-27 12:47:50,358 INFO] Step 580/10000; acc: 37.2; ppl: 239.7; xent: 5.5; lr: 0.03889; sents:    1677; bsz:  590/ 641/21; 2420/2629 tok/s;   1130 sec;
+[2024-07-27 12:48:09,888 INFO] Step 590/10000; acc: 36.0; ppl: 274.7; xent: 5.6; lr: 0.03856; sents:    1322; bsz:  619/ 662/17; 2534/2712 tok/s;   1150 sec;
+[2024-07-27 12:48:29,881 INFO] Step 600/10000; acc: 36.3; ppl: 259.9; xent: 5.6; lr: 0.03824; sents:    1396; bsz:  634/ 680/17; 2536/2721 tok/s;   1170 sec;
+[2024-07-27 12:48:49,813 INFO] Step 610/10000; acc: 36.6; ppl: 254.9; xent: 5.5; lr: 0.03793; sents:    1495; bsz:  614/ 657/19; 2466/2636 tok/s;   1190 sec;
+[2024-07-27 12:49:09,406 INFO] Step 620/10000; acc: 40.5; ppl: 204.1; xent: 5.3; lr: 0.03762; sents:    2196; bsz:  518/ 566/27; 2117/2313 tok/s;   1209 sec;
+[2024-07-27 12:49:28,551 INFO] Step 630/10000; acc: 46.1; ppl: 142.0; xent: 5.0; lr: 0.03732; sents:    2891; bsz:  397/ 453/36; 1659/1895 tok/s;   1228 sec;
+[2024-07-27 12:49:47,525 INFO] Step 640/10000; acc: 47.1; ppl: 130.0; xent: 4.9; lr: 0.03703; sents:    2874; bsz:  384/ 441/36; 1618/1860 tok/s;   1247 sec;
+[2024-07-27 12:50:06,913 INFO] Step 650/10000; acc: 41.4; ppl: 187.6; xent: 5.2; lr: 0.03674; sents:    2215; bsz:  469/ 532/28; 1934/2196 tok/s;   1267 sec;
+[2024-07-27 12:50:26,741 INFO] Step 660/10000; acc: 36.8; ppl: 247.3; xent: 5.5; lr: 0.03646; sents:    1519; bsz:  613/ 658/19; 2474/2653 tok/s;   1287 sec;
+[2024-07-27 12:50:46,726 INFO] Step 670/10000; acc: 36.2; ppl: 268.1; xent: 5.6; lr: 0.03619; sents:    1382; bsz:  635/ 678/17; 2543/2715 tok/s;   1307 sec;
+[2024-07-27 12:51:06,703 INFO] Step 680/10000; acc: 36.5; ppl: 257.6; xent: 5.6; lr: 0.03593; sents:    1378; bsz:  626/ 674/17; 2506/2699 tok/s;   1327 sec;
+[2024-07-27 12:51:26,542 INFO] Step 690/10000; acc: 37.7; ppl: 236.1; xent: 5.5; lr: 0.03566; sents:    1703; bsz:  584/ 627/21; 2355/2530 tok/s;   1346 sec;
+[2024-07-27 12:51:46,014 INFO] Step 700/10000; acc: 42.6; ppl: 177.8; xent: 5.2; lr: 0.03541; sents:    2465; bsz:  496/ 542/31; 2038/2226 tok/s;   1366 sec;
+[2024-07-27 12:52:05,023 INFO] Step 710/10000; acc: 46.4; ppl: 140.9; xent: 4.9; lr: 0.03516; sents:    2835; bsz:  381/ 440/35; 1605/1853 tok/s;   1385 sec;
+[2024-07-27 12:52:24,123 INFO] Step 720/10000; acc: 46.0; ppl: 141.5; xent: 5.0; lr: 0.03491; sents:    2735; bsz:  400/ 463/34; 1676/1939 tok/s;   1404 sec;
+[2024-07-27 12:52:43,742 INFO] Step 730/10000; acc: 40.4; ppl: 196.8; xent: 5.3; lr: 0.03467; sents:    2074; bsz:  526/ 582/26; 2145/2372 tok/s;   1424 sec;
+[2024-07-27 12:53:03,627 INFO] Step 740/10000; acc: 36.4; ppl: 258.5; xent: 5.6; lr: 0.03444; sents:    1430; bsz:  624/ 670/18; 2512/2695 tok/s;   1443 sec;
+[2024-07-27 12:53:23,606 INFO] Step 750/10000; acc: 36.7; ppl: 252.6; xent: 5.5; lr: 0.03421; sents:    1398; bsz:  636/ 682/17; 2547/2729 tok/s;   1463 sec;
+[2024-07-27 12:53:43,650 INFO] Step 760/10000; acc: 36.1; ppl: 256.0; xent: 5.5; lr: 0.03398; sents:    1381; bsz:  639/ 686/17; 2552/2738 tok/s;   1484 sec;
+[2024-07-27 12:54:03,363 INFO] Step 770/10000; acc: 39.1; ppl: 217.8; xent: 5.4; lr: 0.03376; sents:    1999; bsz:  556/ 601/25; 2258/2438 tok/s;   1503 sec;
+[2024-07-27 12:54:22,528 INFO] Step 780/10000; acc: 45.5; ppl: 148.6; xent: 5.0; lr: 0.03355; sents:    2730; bsz:  441/ 497/34; 1843/2075 tok/s;   1522 sec;
+[2024-07-27 12:54:41,549 INFO] Step 790/10000; acc: 46.7; ppl: 135.4; xent: 4.9; lr: 0.03333; sents:    2972; bsz:  403/ 457/37; 1694/1923 tok/s;   1541 sec;
+[2024-07-27 12:55:00,863 INFO] Step 800/10000; acc: 42.8; ppl: 169.1; xent: 5.1; lr: 0.03312; sents:    2365; bsz:  448/ 509/30; 1854/2107 tok/s;   1561 sec;
+[2024-07-27 12:55:20,486 INFO] Step 810/10000; acc: 38.6; ppl: 216.1; xent: 5.4; lr: 0.03292; sents:    1819; bsz:  555/ 607/23; 2261/2475 tok/s;   1580 sec;
+[2024-07-27 12:55:40,362 INFO] Step 820/10000; acc: 36.7; ppl: 254.1; xent: 5.5; lr: 0.03272; sents:    1364; bsz:  621/ 662/17; 2498/2666 tok/s;   1600 sec;
+[2024-07-27 12:56:00,393 INFO] Step 830/10000; acc: 36.8; ppl: 246.5; xent: 5.5; lr: 0.03252; sents:    1400; bsz:  646/ 691/18; 2580/2761 tok/s;   1620 sec;
+[2024-07-27 12:56:20,212 INFO] Step 840/10000; acc: 37.7; ppl: 232.7; xent: 5.4; lr: 0.03233; sents:    1671; bsz:  603/ 653/21; 2435/2638 tok/s;   1640 sec;
+[2024-07-27 12:56:39,734 INFO] Step 850/10000; acc: 40.7; ppl: 196.9; xent: 5.3; lr: 0.03214; sents:    2185; bsz:  514/ 563/27; 2104/2308 tok/s;   1660 sec;
+[2024-07-27 12:56:58,938 INFO] Step 860/10000; acc: 45.5; ppl: 146.6; xent: 5.0; lr: 0.03195; sents:    2754; bsz:  414/ 467/34; 1726/1945 tok/s;   1679 sec;
+[2024-07-27 12:57:17,980 INFO] Step 870/10000; acc: 45.7; ppl: 139.8; xent: 4.9; lr: 0.03177; sents:    2764; bsz:  407/ 463/35; 1709/1944 tok/s;   1698 sec;
+[2024-07-27 12:57:37,399 INFO] Step 880/10000; acc: 41.7; ppl: 181.9; xent: 5.2; lr: 0.03159; sents:    2217; bsz:  482/ 537/28; 1985/2214 tok/s;   1717 sec;
+[2024-07-27 12:57:57,167 INFO] Step 890/10000; acc: 38.1; ppl: 225.4; xent: 5.4; lr: 0.03141; sents:    1680; bsz:  586/ 642/21; 2373/2597 tok/s;   1737 sec;
+[2024-07-27 12:58:17,126 INFO] Step 900/10000; acc: 36.7; ppl: 250.4; xent: 5.5; lr: 0.03123; sents:    1366; bsz:  644/ 682/17; 2579/2732 tok/s;   1757 sec;
+[2024-07-27 12:58:37,269 INFO] Step 910/10000; acc: 36.4; ppl: 250.0; xent: 5.5; lr: 0.03106; sents:    1369; bsz:  643/ 685/17; 2552/2719 tok/s;   1777 sec;
+[2024-07-27 12:58:56,927 INFO] Step 920/10000; acc: 38.9; ppl: 216.7; xent: 5.4; lr: 0.03089; sents:    1855; bsz:  557/ 610/23; 2269/2484 tok/s;   1797 sec;
+[2024-07-27 12:59:16,295 INFO] Step 930/10000; acc: 43.0; ppl: 168.8; xent: 5.1; lr: 0.03073; sents:    2389; bsz:  482/ 531/30; 1991/2194 tok/s;   1816 sec;
+[2024-07-27 12:59:35,344 INFO] Step 940/10000; acc: 45.9; ppl: 145.0; xent: 5.0; lr: 0.03056; sents:    2826; bsz:  399/ 458/35; 1677/1925 tok/s;   1835 sec;
+[2024-07-27 12:59:54,454 INFO] Step 950/10000; acc: 43.9; ppl: 156.0; xent: 5.0; lr: 0.03040; sents:    2487; bsz:  426/ 481/31; 1781/2013 tok/s;   1854 sec;
+[2024-07-27 13:00:13,958 INFO] Step 960/10000; acc: 40.8; ppl: 191.9; xent: 5.3; lr: 0.03024; sents:    2023; bsz:  513/ 566/25; 2103/2320 tok/s;   1874 sec;
+[2024-07-27 13:00:33,735 INFO] Step 970/10000; acc: 37.8; ppl: 234.4; xent: 5.5; lr: 0.03009; sents:    1593; bsz:  577/ 629/20; 2336/2545 tok/s;   1894 sec;
+[2024-07-27 13:00:53,773 INFO] Step 980/10000; acc: 37.2; ppl: 246.7; xent: 5.5; lr: 0.02993; sents:    1379; bsz:  642/ 681/17; 2563/2718 tok/s;   1914 sec;
+[2024-07-27 13:01:13,722 INFO] Step 990/10000; acc: 37.3; ppl: 235.2; xent: 5.5; lr: 0.02978; sents:    1444; bsz:  623/ 665/18; 2499/2668 tok/s;   1934 sec;
+[2024-07-27 13:01:33,363 INFO] Step 1000/10000; acc: 40.2; ppl: 200.7; xent: 5.3; lr: 0.02963; sents:    2135; bsz:  539/ 596/27; 2194/2426 tok/s;   1953 sec;
+[2024-07-27 13:01:33,531 INFO] Saving checkpoint /root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3_step_1000.pt
