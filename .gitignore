@@ -1,4 +1,5 @@
 *.pt
 *.model
-/OpenNMT-py/*
+/root/zindi-nmt/OpenNMT-py/*
+OpenNMT-py/*
 *.lock
