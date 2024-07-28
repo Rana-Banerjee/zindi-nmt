@@ -1,0 +1,137 @@
+[2024-07-28 14:48:21,305 INFO] Parsed 1 corpora from -data.
+[2024-07-28 14:48:21,305 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-zindi_V8_step_100.pt
+[2024-07-28 14:48:25,955 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-28 14:48:25,955 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', 'fra_Latn', '']}.
+[2024-07-28 14:48:25,984 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-28 14:48:25,984 INFO] The decoder start token is: </s>
+[2024-07-28 14:48:25,987 INFO] Over-ride model option set to true - use with care
+[2024-07-28 14:48:25,987 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V9 overriding model: /root/zindi-nmt/models/nllb-200-600M-zindi_V8
+[2024-07-28 14:48:25,987 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V8_step_100.pt overriding model: /root/zindi-nmt/models/nllb-200-600M-onmt.pt
+[2024-07-28 14:48:25,987 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V9.log overriding model: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V8.log
+[2024-07-28 14:48:25,987 INFO] Building model...
+[2024-07-28 14:48:30,685 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-28 14:48:30,686 INFO] Non quantized layer compute is fp16
+[2024-07-28 14:48:30,686 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-28 14:48:30,804 INFO] src: 0 new tokens
+[2024-07-28 14:48:31,053 INFO] tgt: 0 new tokens
+[2024-07-28 14:48:32,000 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-23): 24 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.1, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-23): 24 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=4096, bias=True)
+          (w_2): Linear(in_features=4096, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.1, inplace=False)
+          (dropout_2): Dropout(p=0.1, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.1, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.1, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-28 14:48:32,008 INFO] encoder: 326900736
+[2024-07-28 14:48:32,008 INFO] decoder: 403146189
+[2024-07-28 14:48:32,008 INFO] * number of parameters: 730046925
+[2024-07-28 14:48:32,010 INFO] Trainable parameters = {'torch.float32': 730046925, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-28 14:48:32,010 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-28 14:48:32,010 INFO]  * src vocab size = 24013
+[2024-07-28 14:48:32,010 INFO]  * tgt vocab size = 24013
+[2024-07-28 14:48:32,595 INFO] Starting training on GPU: [0]
+[2024-07-28 14:48:32,595 INFO] Start training loop without validation...
+[2024-07-28 14:48:32,595 INFO] Scoring with: None
+[2024-07-28 14:50:50,442 INFO] Step 10/10000; acc: 91.6; ppl:   6.3; xent: 1.8; lr: 0.00069; sents:   16394; bsz:  998/1273/51; 2318/2955 tok/s;    138 sec;
+[2024-07-28 14:52:40,554 INFO] Step 20/10000; acc: 93.1; ppl:   5.9; xent: 1.8; lr: 0.00131; sents:   16171; bsz: 1012/1291/51; 2941/3751 tok/s;    248 sec;
+[2024-07-28 14:54:29,783 INFO] Step 30/10000; acc: 94.6; ppl:   5.4; xent: 1.7; lr: 0.00194; sents:   16257; bsz: 1015/1282/51; 2973/3755 tok/s;    357 sec;
+[2024-07-28 14:56:24,363 INFO] Step 40/10000; acc: 95.6; ppl:   5.2; xent: 1.6; lr: 0.00256; sents:   16744; bsz:  999/1279/52; 2791/3572 tok/s;    472 sec;
+[2024-07-28 14:57:37,099 INFO] Step 50/10000; acc: 96.4; ppl:   5.0; xent: 1.6; lr: 0.00319; sents:   15480; bsz: 1010/1285/48; 4443/5655 tok/s;    545 sec;
+[2024-07-28 14:58:49,699 INFO] Step 60/10000; acc: 95.8; ppl:   5.0; xent: 1.6; lr: 0.00381; sents:   17062; bsz: 1019/1299/53; 4492/5725 tok/s;    617 sec;
+[2024-07-28 15:00:02,890 INFO] Step 70/10000; acc: 92.4; ppl:   5.7; xent: 1.7; lr: 0.00444; sents:   15388; bsz: 1013/1284/48; 4428/5615 tok/s;    690 sec;
+[2024-07-28 15:01:15,984 INFO] Step 80/10000; acc: 80.5; ppl:   9.0; xent: 2.2; lr: 0.00506; sents:   15838; bsz: 1001/1282/49; 4384/5612 tok/s;    763 sec;
+[2024-07-28 15:02:28,717 INFO] Step 90/10000; acc: 85.9; ppl:   7.1; xent: 2.0; lr: 0.00569; sents:   17307; bsz:  993/1266/54; 4367/5569 tok/s;    836 sec;
+[2024-07-28 15:03:42,126 INFO] Step 100/10000; acc: 92.8; ppl:   5.5; xent: 1.7; lr: 0.00622; sents:   15933; bsz: 1026/1296/50; 4470/5651 tok/s;    910 sec;
+[2024-07-28 15:03:42,140 INFO] Saving checkpoint /root/zindi-nmt/models/nllb-200-600M-zindi_V9_step_100.pt
+[2024-07-28 15:05:02,667 INFO] Step 110/10000; acc: 95.8; ppl:   5.0; xent: 1.6; lr: 0.00593; sents:   16737; bsz:  989/1277/52; 3930/5075 tok/s;    990 sec;
+[2024-07-28 15:06:15,819 INFO] Step 120/10000; acc: 97.5; ppl:   4.6; xent: 1.5; lr: 0.00568; sents:   16094; bsz: 1025/1286/50; 4483/5625 tok/s;   1063 sec;
+[2024-07-28 15:07:28,391 INFO] Step 130/10000; acc: 98.4; ppl:   4.4; xent: 1.5; lr: 0.00546; sents:   16330; bsz:  993/1271/51; 4377/5604 tok/s;   1136 sec;
+[2024-07-28 15:08:41,027 INFO] Step 140/10000; acc: 98.9; ppl:   4.3; xent: 1.5; lr: 0.00526; sents:   16895; bsz: 1009/1304/53; 4447/5744 tok/s;   1208 sec;
+[2024-07-28 15:09:54,028 INFO] Step 150/10000; acc: 99.2; ppl:   4.2; xent: 1.4; lr: 0.00509; sents:   15828; bsz: 1029/1279/49; 4510/5606 tok/s;   1281 sec;
+[2024-07-28 15:11:06,786 INFO] Step 160/10000; acc: 99.3; ppl:   4.2; xent: 1.4; lr: 0.00493; sents:   16664; bsz: 1008/1291/52; 4432/5680 tok/s;   1354 sec;
+[2024-07-28 15:12:19,730 INFO] Step 170/10000; acc: 99.4; ppl:   4.2; xent: 1.4; lr: 0.00478; sents:   15642; bsz:  995/1266/49; 4365/5555 tok/s;   1427 sec;
+[2024-07-28 15:13:32,251 INFO] Step 180/10000; acc: 99.5; ppl:   4.1; xent: 1.4; lr: 0.00465; sents:   17355; bsz:  998/1285/54; 4403/5670 tok/s;   1500 sec;
+[2024-07-28 15:14:45,310 INFO] Step 190/10000; acc: 99.5; ppl:   4.1; xent: 1.4; lr: 0.00452; sents:   15981; bsz: 1024/1290/50; 4485/5650 tok/s;   1573 sec;
+[2024-07-28 15:15:58,033 INFO] Step 200/10000; acc: 99.5; ppl:   4.1; xent: 1.4; lr: 0.00441; sents:   15887; bsz: 1007/1283/50; 4431/5646 tok/s;   1645 sec;
+[2024-07-28 15:15:58,045 INFO] Saving checkpoint /root/zindi-nmt/models/nllb-200-600M-zindi_V9_step_200.pt
+[2024-07-28 15:17:18,506 INFO] Step 210/10000; acc: 99.6; ppl:   4.1; xent: 1.4; lr: 0.00430; sents:   17216; bsz:  990/1277/54; 3936/5077 tok/s;   1726 sec;
+[2024-07-28 15:18:31,839 INFO] Step 220/10000; acc: 99.6; ppl:   4.1; xent: 1.4; lr: 0.00420; sents:   15577; bsz: 1024/1283/49; 4467/5600 tok/s;   1799 sec;
+[2024-07-28 15:19:44,491 INFO] Step 230/10000; acc: 99.6; ppl:   4.1; xent: 1.4; lr: 0.00411; sents:   17040; bsz: 1000/1286/53; 4406/5663 tok/s;   1872 sec;
+[2024-07-28 15:20:57,484 INFO] Step 240/10000; acc: 99.5; ppl:   4.0; xent: 1.4; lr: 0.00403; sents:   15755; bsz:  999/1276/49; 4380/5596 tok/s;   1945 sec;
+[2024-07-28 15:22:10,270 INFO] Step 250/10000; acc: 99.6; ppl:   4.0; xent: 1.4; lr: 0.00394; sents:   16364; bsz: 1005/1284/51; 4417/5645 tok/s;   2018 sec;
+[2024-07-28 15:23:22,916 INFO] Step 260/10000; acc: 99.6; ppl:   4.0; xent: 1.4; lr: 0.00387; sents:   16477; bsz: 1019/1291/51; 4488/5687 tok/s;   2090 sec;
+[2024-07-28 15:24:35,792 INFO] Step 270/10000; acc: 99.5; ppl:   4.0; xent: 1.4; lr: 0.00380; sents:   16770; bsz: 1011/1287/52; 4441/5651 tok/s;   2163 sec;
+[2024-07-28 15:25:48,584 INFO] Step 280/10000; acc: 99.5; ppl:   4.0; xent: 1.4; lr: 0.00373; sents:   15775; bsz: 1008/1284/49; 4433/5643 tok/s;   2236 sec;
+[2024-07-28 15:27:01,541 INFO] Step 290/10000; acc: 99.5; ppl:   4.0; xent: 1.4; lr: 0.00366; sents:   16251; bsz: 1011/1282/51; 4433/5623 tok/s;   2309 sec;
+[2024-07-28 15:28:14,307 INFO] Step 300/10000; acc: 99.4; ppl:   4.0; xent: 1.4; lr: 0.00360; sents:   15715; bsz: 1004/1280/49; 4414/5629 tok/s;   2382 sec;
+[2024-07-28 15:28:14,319 INFO] Saving checkpoint /root/zindi-nmt/models/nllb-200-600M-zindi_V9_step_300.pt

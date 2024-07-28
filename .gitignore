@@ -3,3 +3,4 @@
 /root/zindi-nmt/OpenNMT-py/*
 OpenNMT-py/*
 *.lock
+model.bin
