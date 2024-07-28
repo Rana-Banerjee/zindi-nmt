@@ -6,3 +6,5 @@ pip install poetry
 poetry add ctranslate2
 poetry add "numpy<2"
 poetry shell
+git config user.name "Rana Banerjee"
+git config user.email "rana1224@gmail.com"
