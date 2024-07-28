@@ -1,6 +1,4 @@
 *.pt
-/evals/*
 *.model
 /OpenNMT-py/*
-*.log
 *.lock

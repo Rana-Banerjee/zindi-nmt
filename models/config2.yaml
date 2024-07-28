@@ -1,15 +1,17 @@
 share_vocab: true
-src_vocab: "/root/projects/zindi/nmt_train/models/dictionary2.txt"
+src_vocab: "/root/zindi-nmt/models/dictionary3.txt"
 src_words_min_frequency: 1
-src_vocab_size: 270987
-tgt_vocab: "/root/projects/zindi/nmt_train/models/dictionary2.txt"
+# src_vocab_size: 270987
+src_vocab_size: 24013
+tgt_vocab: "/root/zindi-nmt/models/dictionary3.txt"
 tgt_words_min_frequency: 1
-tgt_vocab_size: 270987
+# tgt_vocab_size: 270987
+tgt_vocab_size: 24013
 vocab_size_multiple: 1
 decoder_start_token: '</s>'
 #### Subword
-src_subword_model: "/root/projects/zindi/nmt_train/models/flores200_sacrebleu_tokenizer_spm2.model"
-tgt_subword_model: "/root/projects/zindi/nmt_train/models/flores200_sacrebleu_tokenizer_spm2.model"
+src_subword_model: "/root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model"
+tgt_subword_model: "/root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model"
 src_subword_nbest: 1
 src_subword_alpha: 0.0
 tgt_subword_nbest: 1
@@ -18,8 +20,8 @@ tgt_subword_alpha: 0.0
 # Training files
 data:
     corpus_1:
-        path_src: "/root/projects/zindi/nmt_train/data/all_dyu.txt"
-        path_tgt: "/root/projects/zindi/nmt_train/data/all_fr.txt"
+        path_src: "/root/zindi-nmt/data/all_dyu.txt"
+        path_tgt: "/root/zindi-nmt/data/all_fr.txt"
         transforms: [sentencepiece, prefix, suffix, filtertoolong]
         weight: 10
         src_prefix: "</s> dyu_Latn"
@@ -36,11 +38,11 @@ data:
     #     src_suffix: ""
     #     tgt_suffix: ""
 update_vocab: true
-train_from: "/root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V3_step_1000.pt"
+train_from: "/root/zindi-nmt/models/nllb-200-600M-zindi_V5_step_2000.pt"
 reset_optim: all
-save_data: "/root/projects/zindi/nmt_train/train"
-save_model: "/root/projects/zindi/nmt_train/models/nllb-200-600M-zindi_V4"
-log_file: "/root/projects/zindi/nmt_train/trainnllb-200-600M-zindi_V4.log"
+save_data: "/root/zindi-nmt/train/"
+save_model: "/root/zindi-nmt/models/nllb-200-600M-zindi_V6"
+log_file: "/root/zindi-nmt/logs/trainnllb-200-600M-zindi_V6.log"
 keep_checkpoint: 3
 save_checkpoint_steps: 1000
 average_decay: 0.0005
@@ -49,13 +51,13 @@ report_every: 10
 train_steps: 10000
 # valid_steps: 100
 # Batching
-bucket_size: 256
+bucket_size: 1024
 num_workers: 4
 prefetch_factor: 2
 world_size: 1
 gpu_ranks: [0]
 batch_type: "tokens"
-batch_size: 1024
+batch_size: 3584
 # valid_batch_size: 8
 batch_size_multiple: 1
 accum_count: [8, 8, 8]
@@ -99,7 +101,7 @@ src_seq_length: 120
 src_seq_length: 120
 
 # Stop training if it does not imporve after n validations
-early_stopping: 10
+# early_stopping: 10
 
 # Use standard scaled dot-product attention
 self_attn_type: scaled-dot
