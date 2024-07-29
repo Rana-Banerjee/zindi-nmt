@@ -38,11 +38,11 @@ data:
     #     src_suffix: ""
     #     tgt_suffix: ""
 update_vocab: true
-train_from: "/root/zindi-nmt/models/nllb-200-600M-zindi_V8_step_100.pt"
+train_from: "/root/zindi-nmt/models/nllb-200-600M-onmt.pt"
 reset_optim: all
 save_data: "/root/zindi-nmt/train/"
-save_model: "/root/zindi-nmt/models/nllb-200-600M-zindi_V9"
-log_file: "/root/zindi-nmt/logs/trainnllb-200-600M-zindi_V9.log"
+save_model: "/root/zindi-nmt/models/nllb-200-600M-zindi_V10"
+log_file: "/root/zindi-nmt/logs/trainnllb-200-600M-zindi_V10.log"
 keep_checkpoint: 3
 save_checkpoint_steps: 100
 average_decay: 0.0005
@@ -51,7 +51,7 @@ report_every: 10
 train_steps: 10000
 # valid_steps: 100
 # Batching
-bucket_size: 262144
+bucket_size: 1048576
 num_workers: 4
 prefetch_factor: 400
 world_size: 1
