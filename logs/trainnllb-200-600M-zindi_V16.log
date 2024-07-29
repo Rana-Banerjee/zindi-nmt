@@ -1,0 +1,237 @@
+[2024-07-29 14:34:05,815 INFO] Parsed 1 corpora from -data.
+[2024-07-29 14:34:05,815 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-zindi_V15_step_500.pt
+[2024-07-29 14:34:07,116 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-29 14:34:07,116 INFO] Get special vocabs from Transforms: {'src': ['', 'dyu_Latn', '</s>', ''], 'tgt': ['', 'fra_Latn', '']}.
+[2024-07-29 14:34:07,158 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 14:34:07,158 INFO] The decoder start token is: </s>
+[2024-07-29 14:34:07,162 INFO] Over-ride model option set to true - use with care
+[2024-07-29 14:34:07,162 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V16 overriding model: /root/zindi-nmt/models/nllb-200-600M-zindi_V15
+[2024-07-29 14:34:07,162 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V15_step_500.pt overriding model: /root/zindi-nmt/models/nllb-200-600M-onmt.pt
+[2024-07-29 14:34:07,162 INFO] Option: dropout , value: [0.5, 0.5, 0.5] overriding model: [0.3, 0.3, 0.3]
+[2024-07-29 14:34:07,162 INFO] Option: attention_dropout , value: [0.3, 0.2, 0.2] overriding model: [0.2, 0.2, 0.2]
+[2024-07-29 14:34:07,162 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V16.log overriding model: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V15.log
+[2024-07-29 14:34:07,163 INFO] Building model...
+[2024-07-29 14:34:09,425 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-29 14:34:09,425 INFO] Non quantized layer compute is fp16
+[2024-07-29 14:34:09,425 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-29 14:34:09,583 INFO] src: 0 new tokens
+[2024-07-29 14:34:09,882 INFO] tgt: 0 new tokens
+[2024-07-29 14:34:10,242 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-11): 12 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.3, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=512, bias=True)
+          (w_2): Linear(in_features=512, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.5, inplace=False)
+          (dropout_2): Dropout(p=0.5, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.5, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.5, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-11): 12 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.3, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=512, bias=True)
+          (w_2): Linear(in_features=512, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.5, inplace=False)
+          (dropout_2): Dropout(p=0.5, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.5, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.3, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-29 14:34:10,247 INFO] encoder: 87622656
+[2024-07-29 14:34:10,247 INFO] decoder: 113462733
+[2024-07-29 14:34:10,247 INFO] * number of parameters: 201085389
+[2024-07-29 14:34:10,249 INFO] Trainable parameters = {'torch.float32': 201085389, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 14:34:10,249 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 14:34:10,249 INFO]  * src vocab size = 24013
+[2024-07-29 14:34:10,249 INFO]  * tgt vocab size = 24013
+[2024-07-29 14:34:10,745 INFO] Starting training on GPU: [0]
+[2024-07-29 14:34:10,746 INFO] Start training loop without validation...
+[2024-07-29 14:34:10,746 INFO] Scoring with: None
+[2024-07-29 14:35:22,254 INFO] Step 10/10000; acc: 77.5; ppl:   9.5; xent: 2.3; lr: 0.00069; sents:   23248; bsz: 6154/7869/291; 6885/8803 tok/s;     72 sec;
+[2024-07-29 14:36:04,356 INFO] Step 20/10000; acc: 78.6; ppl:   8.8; xent: 2.2; lr: 0.00131; sents:   26525; bsz: 6117/7740/332; 11624/14708 tok/s;    114 sec;
+[2024-07-29 14:36:46,497 INFO] Step 30/10000; acc: 80.7; ppl:   8.2; xent: 2.1; lr: 0.00194; sents:   24017; bsz: 6166/7864/300; 11705/14930 tok/s;    156 sec;
+[2024-07-29 14:37:28,661 INFO] Step 40/10000; acc: 81.6; ppl:   8.0; xent: 2.1; lr: 0.00256; sents:   24827; bsz: 6139/7759/310; 11647/14722 tok/s;    198 sec;
+[2024-07-29 14:38:10,791 INFO] Step 50/10000; acc: 82.1; ppl:   7.9; xent: 2.1; lr: 0.00319; sents:   25893; bsz: 5959/7715/324; 11315/14650 tok/s;    240 sec;
+[2024-07-29 14:38:53,003 INFO] Step 60/10000; acc: 82.4; ppl:   7.8; xent: 2.1; lr: 0.00381; sents:   23070; bsz: 6340/7999/288; 12016/15160 tok/s;    282 sec;
+[2024-07-29 14:39:34,401 INFO] Step 70/10000; acc: 82.6; ppl:   7.7; xent: 2.0; lr: 0.00444; sents:   25045; bsz: 6004/7660/313; 11603/14803 tok/s;    324 sec;
+[2024-07-29 14:40:21,324 INFO] Parsed 1 corpora from -data.
+[2024-07-29 14:40:21,324 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-zindi_V15_step_500.pt
+[2024-07-29 14:40:22,561 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-29 14:40:22,561 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 14:40:22,603 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 14:40:22,603 INFO] The decoder start token is: </s>
+[2024-07-29 14:40:22,606 INFO] Over-ride model option set to true - use with care
+[2024-07-29 14:40:22,606 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V16 overriding model: /root/zindi-nmt/models/nllb-200-600M-zindi_V15
+[2024-07-29 14:40:22,606 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V15_step_500.pt overriding model: /root/zindi-nmt/models/nllb-200-600M-onmt.pt
+[2024-07-29 14:40:22,606 INFO] Option: dropout , value: [0.75, 0.75, 0.75] overriding model: [0.3, 0.3, 0.3]
+[2024-07-29 14:40:22,606 INFO] Option: attention_dropout , value: [0.75, 0.75, 0.75] overriding model: [0.2, 0.2, 0.2]
+[2024-07-29 14:40:22,606 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V16.log overriding model: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V15.log
+[2024-07-29 14:40:22,606 INFO] Building model...
+[2024-07-29 14:40:24,764 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-29 14:40:24,764 INFO] Non quantized layer compute is fp16
+[2024-07-29 14:40:24,765 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-29 14:40:24,877 INFO] src: 0 new tokens
+[2024-07-29 14:40:25,096 INFO] tgt: 0 new tokens
+[2024-07-29 14:40:25,424 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.75, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-11): 12 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.75, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=512, bias=True)
+          (w_2): Linear(in_features=512, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.75, inplace=False)
+          (dropout_2): Dropout(p=0.75, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.75, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.75, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-11): 12 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.75, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=512, bias=True)
+          (w_2): Linear(in_features=512, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.75, inplace=False)
+          (dropout_2): Dropout(p=0.75, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.75, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.75, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-29 14:40:25,429 INFO] encoder: 87622656
+[2024-07-29 14:40:25,429 INFO] decoder: 113462733
+[2024-07-29 14:40:25,429 INFO] * number of parameters: 201085389
+[2024-07-29 14:40:25,430 INFO] Trainable parameters = {'torch.float32': 201085389, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 14:40:25,430 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 14:40:25,430 INFO]  * src vocab size = 24013
+[2024-07-29 14:40:25,430 INFO]  * tgt vocab size = 24013
+[2024-07-29 14:40:25,875 INFO] Starting training on GPU: [0]
+[2024-07-29 14:40:25,875 INFO] Start training loop without validation...
+[2024-07-29 14:40:25,875 INFO] Scoring with: None
+[2024-07-29 14:41:36,196 INFO] Step 10/10000; acc: 7.4; ppl: 2838.3; xent: 8.0; lr: 0.00069; sents:   23248; bsz: 6154/7869/291; 7001/8952 tok/s;     70 sec;
+[2024-07-29 14:42:18,332 INFO] Step 20/10000; acc: 14.5; ppl: 576.2; xent: 6.4; lr: 0.00131; sents:   26525; bsz: 6117/7740/332; 11615/14696 tok/s;    112 sec;
+[2024-07-29 14:43:00,369 INFO] Step 30/10000; acc: 17.5; ppl: 366.8; xent: 5.9; lr: 0.00194; sents:   24017; bsz: 6166/7864/300; 11734/14967 tok/s;    154 sec;
+[2024-07-29 14:43:42,176 INFO] Step 40/10000; acc: 21.3; ppl: 235.3; xent: 5.5; lr: 0.00256; sents:   24827; bsz: 6139/7759/310; 11746/14847 tok/s;    196 sec;
+[2024-07-29 14:44:24,100 INFO] Step 50/10000; acc: 24.5; ppl: 169.6; xent: 5.1; lr: 0.00319; sents:   25893; bsz: 5959/7715/324; 11370/14722 tok/s;    238 sec;
+[2024-07-29 14:45:06,319 INFO] Step 60/10000; acc: 25.4; ppl: 133.0; xent: 4.9; lr: 0.00381; sents:   23070; bsz: 6340/7999/288; 12014/15157 tok/s;    280 sec;
+[2024-07-29 14:45:47,739 INFO] Step 70/10000; acc: 28.8; ppl: 103.6; xent: 4.6; lr: 0.00444; sents:   25045; bsz: 6004/7660/313; 11597/14796 tok/s;    322 sec;
+[2024-07-29 14:46:29,527 INFO] Step 80/10000; acc: 30.2; ppl:  87.7; xent: 4.5; lr: 0.00506; sents:   23955; bsz: 6143/7805/299; 11761/14942 tok/s;    364 sec;
+[2024-07-29 14:47:11,747 INFO] Step 90/10000; acc: 32.5; ppl:  73.9; xent: 4.3; lr: 0.00569; sents:   24790; bsz: 6290/8008/310; 11918/15174 tok/s;    406 sec;
+[2024-07-29 14:47:53,526 INFO] Step 100/10000; acc: 34.7; ppl:  64.9; xent: 4.2; lr: 0.00622; sents:   25838; bsz: 6134/7839/323; 11746/15011 tok/s;    448 sec;
+[2024-07-29 14:48:35,491 INFO] Step 110/10000; acc: 35.7; ppl:  57.9; xent: 4.1; lr: 0.00593; sents:   22837; bsz: 6329/8033/285; 12066/15314 tok/s;    490 sec;
+[2024-07-29 14:49:16,902 INFO] Step 120/10000; acc: 36.6; ppl:  57.9; xent: 4.1; lr: 0.00568; sents:   25115; bsz: 5974/7601/314; 11541/14684 tok/s;    531 sec;
+[2024-07-29 14:49:58,579 INFO] Step 130/10000; acc: 38.1; ppl:  51.8; xent: 3.9; lr: 0.00546; sents:   24917; bsz: 6120/7713/311; 11747/14805 tok/s;    573 sec;
+[2024-07-29 14:50:40,302 INFO] Step 140/10000; acc: 39.8; ppl:  46.4; xent: 3.8; lr: 0.00526; sents:   24121; bsz: 6077/7760/302; 11652/14879 tok/s;    614 sec;
+[2024-07-29 14:51:22,403 INFO] Step 150/10000; acc: 41.3; ppl:  42.6; xent: 3.8; lr: 0.00509; sents:   24752; bsz: 6241/8001/309; 11859/15204 tok/s;    657 sec;
+[2024-07-29 14:52:04,369 INFO] Step 160/10000; acc: 42.5; ppl:  38.6; xent: 3.7; lr: 0.00493; sents:   22913; bsz: 6350/8068/286; 12105/15380 tok/s;    698 sec;
+[2024-07-29 14:52:45,586 INFO] Step 170/10000; acc: 44.3; ppl:  38.0; xent: 3.6; lr: 0.00478; sents:   27638; bsz: 5678/7358/345; 11022/14281 tok/s;    740 sec;
+[2024-07-29 14:53:27,558 INFO] Step 180/10000; acc: 44.1; ppl:  35.4; xent: 3.6; lr: 0.00465; sents:   23239; bsz: 6409/8048/290; 12216/15339 tok/s;    782 sec;
