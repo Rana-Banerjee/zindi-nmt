@@ -38,13 +38,13 @@ data:
     #     src_suffix: ""
     #     tgt_suffix: ""
 update_vocab: true
-train_from: "/root/zindi-nmt/models/nllb-200-600M-onmt.pt"
+train_from: "/root/zindi-nmt/models/nllb-200-600M-zindi_V15_step_500.pt"
 reset_optim: all
 save_data: "/root/zindi-nmt/train/"
-save_model: "/root/zindi-nmt/models/nllb-200-600M-zindi_V14"
-log_file: "/root/zindi-nmt/logs/trainnllb-200-600M-zindi_V14.log"
+save_model: "/root/zindi-nmt/models/nllb-200-600M-zindi_V16"
+log_file: "/root/zindi-nmt/logs/trainnllb-200-600M-zindi_V16.log"
 keep_checkpoint: 3
-save_checkpoint_steps: 100
+save_checkpoint_steps: 250
 average_decay: 0.0005
 seed: 1234
 report_every: 10
@@ -52,12 +52,13 @@ train_steps: 10000
 # valid_steps: 100
 # Batching
 bucket_size: 65536
+# bucket_size: 512
 num_workers: 4
 prefetch_factor: 400
 world_size: 1
 gpu_ranks: [0]
 batch_type: "tokens"
-batch_size: 10752
+batch_size: 17536
 # valid_batch_size: 8
 batch_size_multiple: 1
 accum_count: [8, 8, 8]
@@ -82,23 +83,23 @@ encoder_type: transformer
 decoder_type: transformer
 enc_layers: 12
 dec_layers: 12
-heads: 8
+heads: 4
 hidden_size: 1024
 word_vec_size: 1024
-transformer_ff: 2048
+transformer_ff: 512
 add_qkvbias: true
 add_ffnbias: true
 dropout_steps: [0, 15000, 30000]
-dropout: [0.3, 0.3, 0.3]
-attention_dropout: [0.2, 0.2, 0.2]
+dropout: [0.5, 0.5, 0.5]
+attention_dropout: [0.3, 0.2, 0.2]
 share_decoder_embeddings: true
 share_embeddings: true
 position_encoding: true
 position_encoding_type: 'SinusoidalConcat'
 
 # Filter out source/target longer than n if [filtertoolong] enabled
-src_seq_length: 150
-src_seq_length: 150
+src_seq_length: 130
+src_seq_length: 130
 
 # Stop training if it does not imporve after n validations
 # early_stopping: 10
