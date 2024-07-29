@@ -3,6 +3,7 @@ pip install poetry
 poetry add ctranslate2
 poetry add "numpy<2"
 poetry shell
+/root/.cache/pypoetry/virtualenvs/nmt-train-tJo3bMCL-py3.10/bin/python -m pip install ipykernel -U --force-reinstall
 git clone https://github.com/OpenNMT/OpenNMT-py.git
 cd OpenNMT-py
 pip install -e .

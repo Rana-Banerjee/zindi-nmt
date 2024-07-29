@@ -1,0 +1,874 @@
+[2024-07-29 11:36:38,766 INFO] Parsed 1 corpora from -data.
+[2024-07-29 11:36:38,766 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-onmt.pt
+[2024-07-29 11:36:40,345 WARNING] configured transforms is different from checkpoint: +{'prefix', 'suffix', 'sentencepiece'}
+[2024-07-29 11:36:40,346 INFO] Get special vocabs from Transforms: {'src': ['', 'dyu_Latn', '', '</s>'], 'tgt': ['', 'fra_Latn', '']}.
+[2024-07-29 11:36:40,388 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:36:40,389 INFO] The decoder start token is: </s>
+[2024-07-29 11:36:40,420 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-29 11:36:40,420 INFO] Get special vocabs from Transforms: {'src': ['', 'dyu_Latn', '', '</s>'], 'tgt': ['', 'fra_Latn', '']}.
+[2024-07-29 11:36:40,460 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:36:40,461 INFO] The decoder start token is: </s>
+[2024-07-29 11:36:40,464 INFO] Over-ride model option set to true - use with care
+[2024-07-29 11:36:40,464 INFO] Option: config , value: /root/zindi-nmt/models/config2.yaml overriding model: 
+[2024-07-29 11:36:40,464 INFO] Option: data , value: {'corpus_1': {'path_src': '/root/zindi-nmt/data/all_dyu.txt', 'path_tgt': '/root/zindi-nmt/data/all_fr.txt', 'transforms': ['sentencepiece', 'prefix', 'suffix', 'filtertoolong'], 'weight': 10, 'src_prefix': 'dyu_Latn', 'tgt_prefix': 'fra_Latn', 'src_suffix': '</s>', 'tgt_suffix': '', 'path_align': None}} overriding model: {}
+[2024-07-29 11:36:40,464 INFO] Option: skip_empty_level , value: warning overriding model: silent
+[2024-07-29 11:36:40,464 INFO] Option: save_data , value: /root/zindi-nmt/train/ overriding model: 
+[2024-07-29 11:36:40,464 INFO] Option: src_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:36:40,465 INFO] Option: tgt_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:36:40,465 INFO] Option: src_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:36:40,465 INFO] Option: tgt_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:36:40,465 INFO] Option: tgt_seq_length , value: 192 overriding model: 150
+[2024-07-29 11:36:40,465 INFO] Option: src_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:36:40,465 INFO] Option: tgt_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:36:40,465 INFO] Option: update_vocab , value: True overriding model: False
+[2024-07-29 11:36:40,465 INFO] Option: transformer_ff , value: 2048 overriding model: 4096
+[2024-07-29 11:36:40,465 INFO] Option: bucket_size , value: 65536 overriding model: 262144
+[2024-07-29 11:36:40,465 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V13 overriding model: nllb
+[2024-07-29 11:36:40,465 INFO] Option: save_checkpoint_steps , value: 100 overriding model: 5000
+[2024-07-29 11:36:40,465 INFO] Option: keep_checkpoint , value: 3 overriding model: 50
+[2024-07-29 11:36:40,465 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-onmt.pt overriding model: 
+[2024-07-29 11:36:40,465 INFO] Option: reset_optim , value: all overriding model: none
+[2024-07-29 11:36:40,465 INFO] Option: accum_count , value: [8, 8, 8] overriding model: [4]
+[2024-07-29 11:36:40,465 INFO] Option: accum_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:36:40,465 INFO] Option: valid_steps , value: 10000 overriding model: 5000
+[2024-07-29 11:36:40,465 INFO] Option: valid_batch_size , value: 32 overriding model: 4096
+[2024-07-29 11:36:40,465 INFO] Option: train_steps , value: 10000 overriding model: 100000
+[2024-07-29 11:36:40,466 INFO] Option: optim , value: adam overriding model: 
+[2024-07-29 11:36:40,466 INFO] Option: dropout , value: [0.3, 0.3, 0.3] overriding model: [0.1]
+[2024-07-29 11:36:40,466 INFO] Option: attention_dropout , value: [0.2, 0.2, 0.2] overriding model: [0.1]
+[2024-07-29 11:36:40,466 INFO] Option: dropout_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:36:40,466 INFO] Option: average_decay , value: 0.0005 overriding model: 0.0
+[2024-07-29 11:36:40,466 INFO] Option: learning_rate , value: 2.0 overriding model: 5e-05
+[2024-07-29 11:36:40,466 INFO] Option: decay_method , value: noam overriding model: none
+[2024-07-29 11:36:40,466 INFO] Option: warmup_steps , value: 100 overriding model: 4000
+[2024-07-29 11:36:40,466 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V13.log overriding model: 
+[2024-07-29 11:36:40,466 INFO] Option: report_every , value: 10 overriding model: 100
+[2024-07-29 11:36:40,466 INFO] Option: _all_transform , value: {'filtertoolong', 'prefix', 'suffix', 'sentencepiece'} overriding model: {'filtertoolong'}
+[2024-07-29 11:36:40,466 INFO] Building model...
+[2024-07-29 11:36:43,253 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-29 11:36:43,253 INFO] Non quantized layer compute is fp16
+[2024-07-29 11:36:43,254 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-29 11:36:43,502 INFO] src: 14783 new tokens
+[2024-07-29 11:36:43,890 INFO] tgt: 14783 new tokens
+[2024-07-29 11:36:44,423 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-11): 12 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-11): 12 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-29 11:36:44,429 INFO] encoder: 125389824
+[2024-07-29 11:36:44,429 INFO] decoder: 151229901
+[2024-07-29 11:36:44,429 INFO] * number of parameters: 276619725
+[2024-07-29 11:36:44,430 INFO] Trainable parameters = {'torch.float32': 276619725, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:36:44,430 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:36:44,430 INFO]  * src vocab size = 24013
+[2024-07-29 11:36:44,430 INFO]  * tgt vocab size = 24013
+[2024-07-29 11:36:44,817 INFO] Starting training on GPU: [0]
+[2024-07-29 11:36:44,817 INFO] Start training loop without validation...
+[2024-07-29 11:36:44,817 INFO] Scoring with: None
+[2024-07-29 11:37:41,054 INFO] Step 10/10000; acc: 9.4; ppl: 1921.9; xent: 7.6; lr: 0.00069; sents:   12929; bsz: 3141/4005/162; 4468/5697 tok/s;     56 sec;
+[2024-07-29 11:38:06,884 INFO] Step 20/10000; acc: 14.8; ppl: 806.7; xent: 6.7; lr: 0.00131; sents:   11684; bsz: 3143/3972/146; 9734/12303 tok/s;     82 sec;
+[2024-07-29 11:38:33,100 INFO] Step 30/10000; acc: 21.1; ppl: 427.0; xent: 6.1; lr: 0.00194; sents:   13855; bsz: 2855/3780/173; 8713/11537 tok/s;    108 sec;
+[2024-07-29 11:39:00,244 INFO] Step 40/10000; acc: 24.7; ppl: 270.5; xent: 5.6; lr: 0.00256; sents:   12097; bsz: 3237/4018/151; 9540/11844 tok/s;    135 sec;
+[2024-07-29 11:39:26,732 INFO] Step 50/10000; acc: 30.6; ppl: 165.4; xent: 5.1; lr: 0.00319; sents:   12672; bsz: 3042/3868/158; 9187/11684 tok/s;    162 sec;
+[2024-07-29 11:39:40,251 INFO] Parsed 1 corpora from -data.
+[2024-07-29 11:39:40,251 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-onmt.pt
+[2024-07-29 11:39:41,850 WARNING] configured transforms is different from checkpoint: +{'suffix', 'sentencepiece', 'prefix'}
+[2024-07-29 11:39:41,851 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:39:41,893 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:39:41,893 INFO] The decoder start token is: </s>
+[2024-07-29 11:39:41,929 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-29 11:39:41,930 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:39:41,963 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:39:41,964 INFO] The decoder start token is: </s>
+[2024-07-29 11:39:41,967 INFO] Over-ride model option set to true - use with care
+[2024-07-29 11:39:41,967 INFO] Option: config , value: /root/zindi-nmt/models/config2.yaml overriding model: 
+[2024-07-29 11:39:41,967 INFO] Option: data , value: {'corpus_1': {'path_src': '/root/zindi-nmt/data/all_dyu.txt', 'path_tgt': '/root/zindi-nmt/data/all_fr.txt', 'transforms': ['sentencepiece', 'prefix', 'suffix', 'filtertoolong'], 'weight': 10, 'src_prefix': 'dyu_Latn', 'tgt_prefix': 'fra_Latn', 'src_suffix': '</s>', 'tgt_suffix': '', 'path_align': None}} overriding model: {}
+[2024-07-29 11:39:41,967 INFO] Option: skip_empty_level , value: warning overriding model: silent
+[2024-07-29 11:39:41,967 INFO] Option: save_data , value: /root/zindi-nmt/train/ overriding model: 
+[2024-07-29 11:39:41,967 INFO] Option: src_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:39:41,967 INFO] Option: tgt_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:39:41,967 INFO] Option: src_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:39:41,967 INFO] Option: tgt_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:39:41,967 INFO] Option: tgt_seq_length , value: 192 overriding model: 150
+[2024-07-29 11:39:41,967 INFO] Option: src_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:39:41,967 INFO] Option: tgt_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:39:41,967 INFO] Option: update_vocab , value: True overriding model: False
+[2024-07-29 11:39:41,967 INFO] Option: transformer_ff , value: 2048 overriding model: 4096
+[2024-07-29 11:39:41,967 INFO] Option: bucket_size , value: 65536 overriding model: 262144
+[2024-07-29 11:39:41,967 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V13 overriding model: nllb
+[2024-07-29 11:39:41,967 INFO] Option: save_checkpoint_steps , value: 100 overriding model: 5000
+[2024-07-29 11:39:41,967 INFO] Option: keep_checkpoint , value: 3 overriding model: 50
+[2024-07-29 11:39:41,968 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-onmt.pt overriding model: 
+[2024-07-29 11:39:41,968 INFO] Option: reset_optim , value: all overriding model: none
+[2024-07-29 11:39:41,968 INFO] Option: batch_size , value: 12288 overriding model: 8192
+[2024-07-29 11:39:41,968 INFO] Option: accum_count , value: [8, 8, 8] overriding model: [4]
+[2024-07-29 11:39:41,968 INFO] Option: accum_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:39:41,968 INFO] Option: valid_steps , value: 10000 overriding model: 5000
+[2024-07-29 11:39:41,968 INFO] Option: valid_batch_size , value: 32 overriding model: 4096
+[2024-07-29 11:39:41,968 INFO] Option: train_steps , value: 10000 overriding model: 100000
+[2024-07-29 11:39:41,968 INFO] Option: optim , value: adam overriding model: 
+[2024-07-29 11:39:41,968 INFO] Option: dropout , value: [0.3, 0.3, 0.3] overriding model: [0.1]
+[2024-07-29 11:39:41,968 INFO] Option: attention_dropout , value: [0.2, 0.2, 0.2] overriding model: [0.1]
+[2024-07-29 11:39:41,968 INFO] Option: dropout_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:39:41,968 INFO] Option: average_decay , value: 0.0005 overriding model: 0.0
+[2024-07-29 11:39:41,968 INFO] Option: learning_rate , value: 2.0 overriding model: 5e-05
+[2024-07-29 11:39:41,968 INFO] Option: decay_method , value: noam overriding model: none
+[2024-07-29 11:39:41,968 INFO] Option: warmup_steps , value: 100 overriding model: 4000
+[2024-07-29 11:39:41,968 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V13.log overriding model: 
+[2024-07-29 11:39:41,968 INFO] Option: report_every , value: 10 overriding model: 100
+[2024-07-29 11:39:41,968 INFO] Option: _all_transform , value: {'suffix', 'sentencepiece', 'prefix', 'filtertoolong'} overriding model: {'filtertoolong'}
+[2024-07-29 11:39:41,968 INFO] Building model...
+[2024-07-29 11:39:44,760 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-29 11:39:44,761 INFO] Non quantized layer compute is fp16
+[2024-07-29 11:39:44,761 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-29 11:39:44,989 INFO] src: 14783 new tokens
+[2024-07-29 11:39:45,389 INFO] tgt: 14783 new tokens
+[2024-07-29 11:39:45,893 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-11): 12 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-11): 12 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-29 11:39:45,897 INFO] encoder: 125389824
+[2024-07-29 11:39:45,897 INFO] decoder: 151229901
+[2024-07-29 11:39:45,897 INFO] * number of parameters: 276619725
+[2024-07-29 11:39:45,899 INFO] Trainable parameters = {'torch.float32': 276619725, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:39:45,899 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:39:45,899 INFO]  * src vocab size = 24013
+[2024-07-29 11:39:45,899 INFO]  * tgt vocab size = 24013
+[2024-07-29 11:39:46,275 INFO] Starting training on GPU: [0]
+[2024-07-29 11:39:46,275 INFO] Start training loop without validation...
+[2024-07-29 11:39:46,275 INFO] Scoring with: None
+[2024-07-29 11:40:24,034 INFO] Step 2, cuda OOM - batch removed
+[2024-07-29 11:40:24,065 INFO] Step 2, cuda OOM - batch removed
+[2024-07-29 11:42:01,504 INFO] Parsed 1 corpora from -data.
+[2024-07-29 11:42:01,505 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-onmt.pt
+[2024-07-29 11:42:02,918 WARNING] configured transforms is different from checkpoint: +{'sentencepiece', 'suffix', 'prefix'}
+[2024-07-29 11:42:02,918 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:42:02,954 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:42:02,954 INFO] The decoder start token is: </s>
+[2024-07-29 11:42:02,990 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-29 11:42:02,990 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:42:03,022 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:42:03,023 INFO] The decoder start token is: </s>
+[2024-07-29 11:42:03,026 INFO] Over-ride model option set to true - use with care
+[2024-07-29 11:42:03,026 INFO] Option: config , value: /root/zindi-nmt/models/config2.yaml overriding model: 
+[2024-07-29 11:42:03,026 INFO] Option: data , value: {'corpus_1': {'path_src': '/root/zindi-nmt/data/all_dyu.txt', 'path_tgt': '/root/zindi-nmt/data/all_fr.txt', 'transforms': ['sentencepiece', 'prefix', 'suffix', 'filtertoolong'], 'weight': 10, 'src_prefix': 'dyu_Latn', 'tgt_prefix': 'fra_Latn', 'src_suffix': '</s>', 'tgt_suffix': '', 'path_align': None}} overriding model: {}
+[2024-07-29 11:42:03,026 INFO] Option: skip_empty_level , value: warning overriding model: silent
+[2024-07-29 11:42:03,026 INFO] Option: save_data , value: /root/zindi-nmt/train/ overriding model: 
+[2024-07-29 11:42:03,026 INFO] Option: src_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:42:03,026 INFO] Option: tgt_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:42:03,026 INFO] Option: src_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:42:03,026 INFO] Option: tgt_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:42:03,026 INFO] Option: tgt_seq_length , value: 192 overriding model: 150
+[2024-07-29 11:42:03,026 INFO] Option: src_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:42:03,026 INFO] Option: tgt_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:42:03,026 INFO] Option: update_vocab , value: True overriding model: False
+[2024-07-29 11:42:03,026 INFO] Option: transformer_ff , value: 2048 overriding model: 4096
+[2024-07-29 11:42:03,027 INFO] Option: bucket_size , value: 65536 overriding model: 262144
+[2024-07-29 11:42:03,027 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V13 overriding model: nllb
+[2024-07-29 11:42:03,027 INFO] Option: save_checkpoint_steps , value: 100 overriding model: 5000
+[2024-07-29 11:42:03,027 INFO] Option: keep_checkpoint , value: 3 overriding model: 50
+[2024-07-29 11:42:03,027 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-onmt.pt overriding model: 
+[2024-07-29 11:42:03,027 INFO] Option: reset_optim , value: all overriding model: none
+[2024-07-29 11:42:03,027 INFO] Option: batch_size , value: 10240 overriding model: 8192
+[2024-07-29 11:42:03,027 INFO] Option: accum_count , value: [8, 8, 8] overriding model: [4]
+[2024-07-29 11:42:03,027 INFO] Option: accum_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:42:03,027 INFO] Option: valid_steps , value: 10000 overriding model: 5000
+[2024-07-29 11:42:03,027 INFO] Option: valid_batch_size , value: 32 overriding model: 4096
+[2024-07-29 11:42:03,027 INFO] Option: train_steps , value: 10000 overriding model: 100000
+[2024-07-29 11:42:03,027 INFO] Option: optim , value: adam overriding model: 
+[2024-07-29 11:42:03,027 INFO] Option: dropout , value: [0.3, 0.3, 0.3] overriding model: [0.1]
+[2024-07-29 11:42:03,027 INFO] Option: attention_dropout , value: [0.2, 0.2, 0.2] overriding model: [0.1]
+[2024-07-29 11:42:03,027 INFO] Option: dropout_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:42:03,027 INFO] Option: average_decay , value: 0.0005 overriding model: 0.0
+[2024-07-29 11:42:03,027 INFO] Option: learning_rate , value: 2.0 overriding model: 5e-05
+[2024-07-29 11:42:03,027 INFO] Option: decay_method , value: noam overriding model: none
+[2024-07-29 11:42:03,028 INFO] Option: warmup_steps , value: 100 overriding model: 4000
+[2024-07-29 11:42:03,028 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V13.log overriding model: 
+[2024-07-29 11:42:03,028 INFO] Option: report_every , value: 10 overriding model: 100
+[2024-07-29 11:42:03,028 INFO] Option: _all_transform , value: {'suffix', 'sentencepiece', 'filtertoolong', 'prefix'} overriding model: {'filtertoolong'}
+[2024-07-29 11:42:03,028 INFO] Building model...
+[2024-07-29 11:42:05,803 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-29 11:42:05,804 INFO] Non quantized layer compute is fp16
+[2024-07-29 11:42:05,804 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-29 11:42:06,031 INFO] src: 14783 new tokens
+[2024-07-29 11:42:06,357 INFO] tgt: 14783 new tokens
+[2024-07-29 11:42:06,857 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-11): 12 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-11): 12 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-29 11:42:06,863 INFO] encoder: 125389824
+[2024-07-29 11:42:06,863 INFO] decoder: 151229901
+[2024-07-29 11:42:06,863 INFO] * number of parameters: 276619725
+[2024-07-29 11:42:06,864 INFO] Trainable parameters = {'torch.float32': 276619725, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:42:06,865 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:42:06,865 INFO]  * src vocab size = 24013
+[2024-07-29 11:42:06,865 INFO]  * tgt vocab size = 24013
+[2024-07-29 11:42:07,204 INFO] Starting training on GPU: [0]
+[2024-07-29 11:42:07,204 INFO] Start training loop without validation...
+[2024-07-29 11:42:07,204 INFO] Scoring with: None
+[2024-07-29 11:42:54,693 INFO] Step 6, cuda OOM - batch removed
+[2024-07-29 11:42:54,756 INFO] Step 6, cuda OOM - batch removed
+[2024-07-29 11:42:54,824 INFO] Step 6, cuda OOM - batch removed
+[2024-07-29 11:42:54,864 INFO] Step 6, cuda OOM - batch removed
+[2024-07-29 11:42:54,899 INFO] Step 6, cuda OOM - batch removed
+[2024-07-29 11:42:54,922 INFO] Step 6, cuda OOM - batch removed
+[2024-07-29 11:43:26,950 INFO] Parsed 1 corpora from -data.
+[2024-07-29 11:43:26,950 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-onmt.pt
+[2024-07-29 11:43:28,383 WARNING] configured transforms is different from checkpoint: +{'sentencepiece', 'suffix', 'prefix'}
+[2024-07-29 11:43:28,384 INFO] Get special vocabs from Transforms: {'src': ['</s>', '', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:43:28,417 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:43:28,417 INFO] The decoder start token is: </s>
+[2024-07-29 11:43:28,459 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-29 11:43:28,459 INFO] Get special vocabs from Transforms: {'src': ['</s>', '', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:43:28,492 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:43:28,492 INFO] The decoder start token is: </s>
+[2024-07-29 11:43:28,495 INFO] Over-ride model option set to true - use with care
+[2024-07-29 11:43:28,495 INFO] Option: config , value: /root/zindi-nmt/models/config2.yaml overriding model: 
+[2024-07-29 11:43:28,495 INFO] Option: data , value: {'corpus_1': {'path_src': '/root/zindi-nmt/data/all_dyu.txt', 'path_tgt': '/root/zindi-nmt/data/all_fr.txt', 'transforms': ['sentencepiece', 'prefix', 'suffix', 'filtertoolong'], 'weight': 10, 'src_prefix': 'dyu_Latn', 'tgt_prefix': 'fra_Latn', 'src_suffix': '</s>', 'tgt_suffix': '', 'path_align': None}} overriding model: {}
+[2024-07-29 11:43:28,495 INFO] Option: skip_empty_level , value: warning overriding model: silent
+[2024-07-29 11:43:28,495 INFO] Option: save_data , value: /root/zindi-nmt/train/ overriding model: 
+[2024-07-29 11:43:28,495 INFO] Option: src_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:43:28,495 INFO] Option: tgt_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:43:28,495 INFO] Option: src_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:43:28,495 INFO] Option: tgt_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:43:28,496 INFO] Option: tgt_seq_length , value: 192 overriding model: 150
+[2024-07-29 11:43:28,496 INFO] Option: src_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:43:28,496 INFO] Option: tgt_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:43:28,496 INFO] Option: update_vocab , value: True overriding model: False
+[2024-07-29 11:43:28,496 INFO] Option: transformer_ff , value: 2048 overriding model: 4096
+[2024-07-29 11:43:28,496 INFO] Option: bucket_size , value: 65536 overriding model: 262144
+[2024-07-29 11:43:28,496 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V13 overriding model: nllb
+[2024-07-29 11:43:28,496 INFO] Option: save_checkpoint_steps , value: 100 overriding model: 5000
+[2024-07-29 11:43:28,496 INFO] Option: keep_checkpoint , value: 3 overriding model: 50
+[2024-07-29 11:43:28,496 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-onmt.pt overriding model: 
+[2024-07-29 11:43:28,496 INFO] Option: reset_optim , value: all overriding model: none
+[2024-07-29 11:43:28,496 INFO] Option: batch_size , value: 9216 overriding model: 8192
+[2024-07-29 11:43:28,496 INFO] Option: accum_count , value: [8, 8, 8] overriding model: [4]
+[2024-07-29 11:43:28,496 INFO] Option: accum_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:43:28,496 INFO] Option: valid_steps , value: 10000 overriding model: 5000
+[2024-07-29 11:43:28,496 INFO] Option: valid_batch_size , value: 32 overriding model: 4096
+[2024-07-29 11:43:28,496 INFO] Option: train_steps , value: 10000 overriding model: 100000
+[2024-07-29 11:43:28,496 INFO] Option: optim , value: adam overriding model: 
+[2024-07-29 11:43:28,496 INFO] Option: dropout , value: [0.3, 0.3, 0.3] overriding model: [0.1]
+[2024-07-29 11:43:28,496 INFO] Option: attention_dropout , value: [0.2, 0.2, 0.2] overriding model: [0.1]
+[2024-07-29 11:43:28,496 INFO] Option: dropout_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:43:28,496 INFO] Option: average_decay , value: 0.0005 overriding model: 0.0
+[2024-07-29 11:43:28,496 INFO] Option: learning_rate , value: 2.0 overriding model: 5e-05
+[2024-07-29 11:43:28,497 INFO] Option: decay_method , value: noam overriding model: none
+[2024-07-29 11:43:28,497 INFO] Option: warmup_steps , value: 100 overriding model: 4000
+[2024-07-29 11:43:28,497 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V13.log overriding model: 
+[2024-07-29 11:43:28,497 INFO] Option: report_every , value: 10 overriding model: 100
+[2024-07-29 11:43:28,497 INFO] Option: _all_transform , value: {'sentencepiece', 'suffix', 'filtertoolong', 'prefix'} overriding model: {'filtertoolong'}
+[2024-07-29 11:43:28,497 INFO] Building model...
+[2024-07-29 11:43:31,137 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-29 11:43:31,138 INFO] Non quantized layer compute is fp16
+[2024-07-29 11:43:31,138 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-29 11:43:31,325 INFO] src: 14783 new tokens
+[2024-07-29 11:43:31,657 INFO] tgt: 14783 new tokens
+[2024-07-29 11:43:32,099 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-11): 12 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-11): 12 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-29 11:43:32,104 INFO] encoder: 125389824
+[2024-07-29 11:43:32,104 INFO] decoder: 151229901
+[2024-07-29 11:43:32,104 INFO] * number of parameters: 276619725
+[2024-07-29 11:43:32,105 INFO] Trainable parameters = {'torch.float32': 276619725, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:43:32,105 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:43:32,105 INFO]  * src vocab size = 24013
+[2024-07-29 11:43:32,105 INFO]  * tgt vocab size = 24013
+[2024-07-29 11:43:32,427 INFO] Starting training on GPU: [0]
+[2024-07-29 11:43:32,427 INFO] Start training loop without validation...
+[2024-07-29 11:43:32,427 INFO] Scoring with: None
+[2024-07-29 11:44:31,127 INFO] Step 10/10000; acc: 9.6; ppl: 1817.0; xent: 7.5; lr: 0.00069; sents:   13884; bsz: 3403/4353/174; 4637/5932 tok/s;     59 sec;
+[2024-07-29 11:44:59,644 INFO] Step 20/10000; acc: 16.0; ppl: 759.5; xent: 6.6; lr: 0.00131; sents:   14060; bsz: 3364/4295/176; 9437/12050 tok/s;     87 sec;
+[2024-07-29 11:45:08,411 INFO] Parsed 1 corpora from -data.
+[2024-07-29 11:45:08,411 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-onmt.pt
+[2024-07-29 11:45:09,919 WARNING] configured transforms is different from checkpoint: +{'suffix', 'prefix', 'sentencepiece'}
+[2024-07-29 11:45:09,919 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:45:09,954 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:45:09,954 INFO] The decoder start token is: </s>
+[2024-07-29 11:45:09,992 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-29 11:45:09,992 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:45:10,026 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:45:10,026 INFO] The decoder start token is: </s>
+[2024-07-29 11:45:10,030 INFO] Over-ride model option set to true - use with care
+[2024-07-29 11:45:10,030 INFO] Option: config , value: /root/zindi-nmt/models/config2.yaml overriding model: 
+[2024-07-29 11:45:10,030 INFO] Option: data , value: {'corpus_1': {'path_src': '/root/zindi-nmt/data/all_dyu.txt', 'path_tgt': '/root/zindi-nmt/data/all_fr.txt', 'transforms': ['sentencepiece', 'prefix', 'suffix', 'filtertoolong'], 'weight': 10, 'src_prefix': 'dyu_Latn', 'tgt_prefix': 'fra_Latn', 'src_suffix': '</s>', 'tgt_suffix': '', 'path_align': None}} overriding model: {}
+[2024-07-29 11:45:10,030 INFO] Option: skip_empty_level , value: warning overriding model: silent
+[2024-07-29 11:45:10,030 INFO] Option: save_data , value: /root/zindi-nmt/train/ overriding model: 
+[2024-07-29 11:45:10,030 INFO] Option: src_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:45:10,030 INFO] Option: tgt_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:45:10,030 INFO] Option: src_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:45:10,030 INFO] Option: tgt_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:45:10,030 INFO] Option: tgt_seq_length , value: 192 overriding model: 150
+[2024-07-29 11:45:10,030 INFO] Option: src_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:45:10,030 INFO] Option: tgt_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:45:10,030 INFO] Option: update_vocab , value: True overriding model: False
+[2024-07-29 11:45:10,030 INFO] Option: transformer_ff , value: 2048 overriding model: 4096
+[2024-07-29 11:45:10,030 INFO] Option: bucket_size , value: 65536 overriding model: 262144
+[2024-07-29 11:45:10,030 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V13 overriding model: nllb
+[2024-07-29 11:45:10,030 INFO] Option: save_checkpoint_steps , value: 100 overriding model: 5000
+[2024-07-29 11:45:10,030 INFO] Option: keep_checkpoint , value: 3 overriding model: 50
+[2024-07-29 11:45:10,030 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-onmt.pt overriding model: 
+[2024-07-29 11:45:10,030 INFO] Option: reset_optim , value: all overriding model: none
+[2024-07-29 11:45:10,031 INFO] Option: batch_size , value: 9728 overriding model: 8192
+[2024-07-29 11:45:10,031 INFO] Option: accum_count , value: [8, 8, 8] overriding model: [4]
+[2024-07-29 11:45:10,031 INFO] Option: accum_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:45:10,031 INFO] Option: valid_steps , value: 10000 overriding model: 5000
+[2024-07-29 11:45:10,031 INFO] Option: valid_batch_size , value: 32 overriding model: 4096
+[2024-07-29 11:45:10,031 INFO] Option: train_steps , value: 10000 overriding model: 100000
+[2024-07-29 11:45:10,031 INFO] Option: optim , value: adam overriding model: 
+[2024-07-29 11:45:10,031 INFO] Option: dropout , value: [0.3, 0.3, 0.3] overriding model: [0.1]
+[2024-07-29 11:45:10,031 INFO] Option: attention_dropout , value: [0.2, 0.2, 0.2] overriding model: [0.1]
+[2024-07-29 11:45:10,031 INFO] Option: dropout_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:45:10,031 INFO] Option: average_decay , value: 0.0005 overriding model: 0.0
+[2024-07-29 11:45:10,031 INFO] Option: learning_rate , value: 2.0 overriding model: 5e-05
+[2024-07-29 11:45:10,031 INFO] Option: decay_method , value: noam overriding model: none
+[2024-07-29 11:45:10,031 INFO] Option: warmup_steps , value: 100 overriding model: 4000
+[2024-07-29 11:45:10,031 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V13.log overriding model: 
+[2024-07-29 11:45:10,031 INFO] Option: report_every , value: 10 overriding model: 100
+[2024-07-29 11:45:10,031 INFO] Option: _all_transform , value: {'filtertoolong', 'suffix', 'sentencepiece', 'prefix'} overriding model: {'filtertoolong'}
+[2024-07-29 11:45:10,031 INFO] Building model...
+[2024-07-29 11:45:12,662 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-29 11:45:12,663 INFO] Non quantized layer compute is fp16
+[2024-07-29 11:45:12,663 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-29 11:45:12,848 INFO] src: 14783 new tokens
+[2024-07-29 11:45:13,190 INFO] tgt: 14783 new tokens
+[2024-07-29 11:45:13,674 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-11): 12 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-11): 12 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-29 11:45:13,679 INFO] encoder: 125389824
+[2024-07-29 11:45:13,679 INFO] decoder: 151229901
+[2024-07-29 11:45:13,679 INFO] * number of parameters: 276619725
+[2024-07-29 11:45:13,680 INFO] Trainable parameters = {'torch.float32': 276619725, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:45:13,680 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:45:13,680 INFO]  * src vocab size = 24013
+[2024-07-29 11:45:13,680 INFO]  * tgt vocab size = 24013
+[2024-07-29 11:45:14,021 INFO] Starting training on GPU: [0]
+[2024-07-29 11:45:14,022 INFO] Start training loop without validation...
+[2024-07-29 11:45:14,022 INFO] Scoring with: None
+[2024-07-29 11:46:18,216 INFO] Step 10/10000; acc: 9.9; ppl: 1761.8; xent: 7.5; lr: 0.00069; sents:   14992; bsz: 3634/4654/187; 4528/5799 tok/s;     64 sec;
+[2024-07-29 11:46:48,999 INFO] Step 20/10000; acc: 15.9; ppl: 749.4; xent: 6.6; lr: 0.00131; sents:   14231; bsz: 3627/4617/178; 9425/12000 tok/s;     95 sec;
+[2024-07-29 11:46:55,753 INFO] Parsed 1 corpora from -data.
+[2024-07-29 11:46:55,753 INFO] Loading checkpoint from /root/zindi-nmt/models/nllb-200-600M-onmt.pt
+[2024-07-29 11:46:57,347 WARNING] configured transforms is different from checkpoint: +{'prefix', 'sentencepiece', 'suffix'}
+[2024-07-29 11:46:57,347 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:46:57,388 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:46:57,388 INFO] The decoder start token is: </s>
+[2024-07-29 11:46:57,415 INFO] Updating checkpoint vocabulary with new vocabulary
+[2024-07-29 11:46:57,415 INFO] Get special vocabs from Transforms: {'src': ['', '</s>', '', 'dyu_Latn'], 'tgt': ['', '', 'fra_Latn']}.
+[2024-07-29 11:46:57,447 INFO] The first 10 tokens of the vocabs are:['', '<s>', '<blank>', '</s>', '<unk>', 'dyu_Latn', 'fra_Latn', '.', '▁de', ',']
+[2024-07-29 11:46:57,447 INFO] The decoder start token is: </s>
+[2024-07-29 11:46:57,450 INFO] Over-ride model option set to true - use with care
+[2024-07-29 11:46:57,450 INFO] Option: config , value: /root/zindi-nmt/models/config2.yaml overriding model: 
+[2024-07-29 11:46:57,450 INFO] Option: data , value: {'corpus_1': {'path_src': '/root/zindi-nmt/data/all_dyu.txt', 'path_tgt': '/root/zindi-nmt/data/all_fr.txt', 'transforms': ['sentencepiece', 'prefix', 'suffix', 'filtertoolong'], 'weight': 10, 'src_prefix': 'dyu_Latn', 'tgt_prefix': 'fra_Latn', 'src_suffix': '</s>', 'tgt_suffix': '', 'path_align': None}} overriding model: {}
+[2024-07-29 11:46:57,450 INFO] Option: skip_empty_level , value: warning overriding model: silent
+[2024-07-29 11:46:57,450 INFO] Option: save_data , value: /root/zindi-nmt/train/ overriding model: 
+[2024-07-29 11:46:57,451 INFO] Option: src_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:46:57,451 INFO] Option: tgt_vocab , value: /root/zindi-nmt/models/dictionary3.txt overriding model: 
+[2024-07-29 11:46:57,451 INFO] Option: src_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:46:57,451 INFO] Option: tgt_vocab_size , value: 24013 overriding model: 256206
+[2024-07-29 11:46:57,451 INFO] Option: tgt_seq_length , value: 192 overriding model: 150
+[2024-07-29 11:46:57,451 INFO] Option: src_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:46:57,451 INFO] Option: tgt_subword_model , value: /root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model overriding model: 
+[2024-07-29 11:46:57,451 INFO] Option: update_vocab , value: True overriding model: False
+[2024-07-29 11:46:57,451 INFO] Option: transformer_ff , value: 2048 overriding model: 4096
+[2024-07-29 11:46:57,451 INFO] Option: bucket_size , value: 65536 overriding model: 262144
+[2024-07-29 11:46:57,451 INFO] Option: save_model , value: /root/zindi-nmt/models/nllb-200-600M-zindi_V13 overriding model: nllb
+[2024-07-29 11:46:57,451 INFO] Option: save_checkpoint_steps , value: 100 overriding model: 5000
+[2024-07-29 11:46:57,451 INFO] Option: keep_checkpoint , value: 3 overriding model: 50
+[2024-07-29 11:46:57,451 INFO] Option: train_from , value: /root/zindi-nmt/models/nllb-200-600M-onmt.pt overriding model: 
+[2024-07-29 11:46:57,451 INFO] Option: reset_optim , value: all overriding model: none
+[2024-07-29 11:46:57,451 INFO] Option: batch_size , value: 9984 overriding model: 8192
+[2024-07-29 11:46:57,451 INFO] Option: accum_count , value: [8, 8, 8] overriding model: [4]
+[2024-07-29 11:46:57,451 INFO] Option: accum_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:46:57,451 INFO] Option: valid_steps , value: 10000 overriding model: 5000
+[2024-07-29 11:46:57,451 INFO] Option: valid_batch_size , value: 32 overriding model: 4096
+[2024-07-29 11:46:57,451 INFO] Option: train_steps , value: 10000 overriding model: 100000
+[2024-07-29 11:46:57,451 INFO] Option: optim , value: adam overriding model: 
+[2024-07-29 11:46:57,451 INFO] Option: dropout , value: [0.3, 0.3, 0.3] overriding model: [0.1]
+[2024-07-29 11:46:57,452 INFO] Option: attention_dropout , value: [0.2, 0.2, 0.2] overriding model: [0.1]
+[2024-07-29 11:46:57,452 INFO] Option: dropout_steps , value: [0, 15000, 30000] overriding model: [0]
+[2024-07-29 11:46:57,452 INFO] Option: average_decay , value: 0.0005 overriding model: 0.0
+[2024-07-29 11:46:57,452 INFO] Option: learning_rate , value: 2.0 overriding model: 5e-05
+[2024-07-29 11:46:57,452 INFO] Option: decay_method , value: noam overriding model: none
+[2024-07-29 11:46:57,452 INFO] Option: warmup_steps , value: 100 overriding model: 4000
+[2024-07-29 11:46:57,452 INFO] Option: log_file , value: /root/zindi-nmt/logs/trainnllb-200-600M-zindi_V13.log overriding model: 
+[2024-07-29 11:46:57,452 INFO] Option: report_every , value: 10 overriding model: 100
+[2024-07-29 11:46:57,452 INFO] Option: _all_transform , value: {'filtertoolong', 'suffix', 'sentencepiece', 'prefix'} overriding model: {'filtertoolong'}
+[2024-07-29 11:46:57,452 INFO] Building model...
+[2024-07-29 11:47:00,160 INFO] Switching model to float32 for amp/apex_amp
+[2024-07-29 11:47:00,160 INFO] Non quantized layer compute is fp16
+[2024-07-29 11:47:00,160 INFO] Updating vocabulary embeddings with checkpoint embeddings
+[2024-07-29 11:47:00,337 INFO] src: 14783 new tokens
+[2024-07-29 11:47:00,651 INFO] tgt: 14783 new tokens
+[2024-07-29 11:47:01,189 INFO] NMTModel(
+  (encoder): TransformerEncoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (transformer): ModuleList(
+      (0-11): 12 x TransformerEncoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+      )
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+  )
+  (decoder): TransformerDecoder(
+    (embeddings): Embeddings(
+      (make_embedding): Sequential(
+        (emb_luts): Elementwise(
+          (0): Embedding(24013, 1024, padding_idx=2)
+        )
+        (pe): PositionalEncoding()
+      )
+      (dropout): Dropout(p=0.3, inplace=False)
+    )
+    (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+    (transformer_layers): ModuleList(
+      (0-11): 12 x TransformerDecoderLayer(
+        (self_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (feed_forward): PositionwiseFeedForward(
+          (w_1): Linear(in_features=1024, out_features=2048, bias=True)
+          (w_2): Linear(in_features=2048, out_features=1024, bias=True)
+          (layer_norm): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+          (dropout_1): Dropout(p=0.3, inplace=False)
+          (dropout_2): Dropout(p=0.3, inplace=False)
+        )
+        (layer_norm_1): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+        (dropout): Dropout(p=0.3, inplace=False)
+        (context_attn): MultiHeadedAttention(
+          (linear_keys): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_values): Linear(in_features=1024, out_features=1024, bias=True)
+          (linear_query): Linear(in_features=1024, out_features=1024, bias=True)
+          (softmax): Softmax(dim=-1)
+          (dropout): Dropout(p=0.2, inplace=False)
+          (final_linear): Linear(in_features=1024, out_features=1024, bias=True)
+        )
+        (layer_norm_2): LayerNorm((1024,), eps=1e-06, elementwise_affine=True)
+      )
+    )
+  )
+  (generator): Linear(in_features=1024, out_features=24013, bias=True)
+)
+[2024-07-29 11:47:01,194 INFO] encoder: 125389824
+[2024-07-29 11:47:01,194 INFO] decoder: 151229901
+[2024-07-29 11:47:01,195 INFO] * number of parameters: 276619725
+[2024-07-29 11:47:01,196 INFO] Trainable parameters = {'torch.float32': 276619725, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:47:01,196 INFO] Non trainable parameters = {'torch.float32': 0, 'torch.float16': 0, 'torch.uint8': 0, 'torch.int8': 0}
+[2024-07-29 11:47:01,196 INFO]  * src vocab size = 24013
+[2024-07-29 11:47:01,196 INFO]  * tgt vocab size = 24013
+[2024-07-29 11:47:01,523 INFO] Starting training on GPU: [0]
+[2024-07-29 11:47:01,523 INFO] Start training loop without validation...
+[2024-07-29 11:47:01,523 INFO] Scoring with: None
+[2024-07-29 11:48:02,468 INFO] Step 10/10000; acc: 9.7; ppl: 1782.0; xent: 7.5; lr: 0.00069; sents:   14962; bsz: 3714/4733/187; 4875/6212 tok/s;     61 sec;
+[2024-07-29 11:48:34,456 INFO] Step 20/10000; acc: 15.8; ppl: 755.0; xent: 6.6; lr: 0.00131; sents:   14962; bsz: 3714/4733/187; 9289/11836 tok/s;     93 sec;
+[2024-07-29 11:49:06,744 INFO] Step 30/10000; acc: 20.1; ppl: 445.4; xent: 6.1; lr: 0.00194; sents:   14962; bsz: 3714/4733/187; 9202/11726 tok/s;    125 sec;
+[2024-07-29 11:49:39,028 INFO] Step 40/10000; acc: 25.2; ppl: 254.8; xent: 5.5; lr: 0.00256; sents:   14962; bsz: 3714/4733/187; 9204/11728 tok/s;    158 sec;
+[2024-07-29 11:50:11,183 INFO] Step 50/10000; acc: 30.3; ppl: 161.0; xent: 5.1; lr: 0.00319; sents:   14962; bsz: 3714/4733/187; 9240/11775 tok/s;    190 sec;
+[2024-07-29 11:50:43,237 INFO] Step 60/10000; acc: 34.2; ppl: 117.6; xent: 4.8; lr: 0.00381; sents:   14962; bsz: 3714/4733/187; 9270/11812 tok/s;    222 sec;
+[2024-07-29 11:51:15,344 INFO] Step 70/10000; acc: 38.1; ppl:  85.8; xent: 4.5; lr: 0.00444; sents:   14962; bsz: 3714/4733/187; 9254/11792 tok/s;    254 sec;
+[2024-07-29 11:51:47,462 INFO] Step 80/10000; acc: 41.8; ppl:  65.6; xent: 4.2; lr: 0.00506; sents:   14962; bsz: 3714/4733/187; 9251/11788 tok/s;    286 sec;
+[2024-07-29 11:52:19,610 INFO] Step 90/10000; acc: 42.6; ppl:  59.1; xent: 4.1; lr: 0.00569; sents:   14962; bsz: 3714/4733/187; 9242/11777 tok/s;    318 sec;
+[2024-07-29 11:52:51,741 INFO] Step 100/10000; acc: 45.8; ppl:  46.7; xent: 3.8; lr: 0.00622; sents:   14962; bsz: 3714/4733/187; 9247/11783 tok/s;    350 sec;
+[2024-07-29 11:52:51,758 INFO] Saving checkpoint /root/zindi-nmt/models/nllb-200-600M-zindi_V13_step_100.pt
+[2024-07-29 11:53:26,798 INFO] Step 110/10000; acc: 48.8; ppl:  37.7; xent: 3.6; lr: 0.00593; sents:   14962; bsz: 3714/4733/187; 8475/10800 tok/s;    385 sec;
