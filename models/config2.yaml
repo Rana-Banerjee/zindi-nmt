@@ -1,17 +1,17 @@
 share_vocab: true
-src_vocab: "/root/zindi-nmt/models/dictionary3.txt"
+src_vocab: "/root/zindi-nmt/models/dictionary.txt"
 src_words_min_frequency: 1
-# src_vocab_size: 270987
-src_vocab_size: 24013
-tgt_vocab: "/root/zindi-nmt/models/dictionary3.txt"
+src_vocab_size: 256206
+# src_vocab_size: 24013
+tgt_vocab: "/root/zindi-nmt/models/dictionary.txt"
 tgt_words_min_frequency: 1
-# tgt_vocab_size: 270987
-tgt_vocab_size: 24013
+tgt_vocab_size: 256206
+# tgt_vocab_size: 24013
 vocab_size_multiple: 1
 decoder_start_token: '</s>'
 #### Subword
-src_subword_model: "/root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model"
-tgt_subword_model: "/root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm3.model"
+src_subword_model: "/root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm.model"
+tgt_subword_model: "/root/zindi-nmt/models/flores200_sacrebleu_tokenizer_spm.model"
 src_subword_nbest: 1
 src_subword_alpha: 0.0
 tgt_subword_nbest: 1
@@ -20,46 +20,46 @@ tgt_subword_alpha: 0.0
 # Training files
 data:
     corpus_1:
-        path_src: "/root/zindi-nmt/data/all_dyu.txt"
-        path_tgt: "/root/zindi-nmt/data/all_fr.txt"
+        path_src: "/root/zindi-nmt/data/master_train_dyu.txt"
+        path_tgt: "/root/zindi-nmt/data/master_train_fra.txt"
         transforms: [sentencepiece, prefix, suffix, filtertoolong]
         weight: 10
         src_prefix: "dyu_Latn"
         tgt_prefix: "fra_Latn"
         src_suffix: "</s>"
         tgt_suffix: ""
-    # valid:
-    #     path_src: /content/drive/MyDrive/zindi_opt/nmt/training/MT-Preparation/data/all_dyu.txt-filtered.dyu
-    #     path_tgt: /content/drive/MyDrive/zindi_opt/nmt/training/MT-Preparation/data/all_fr.txt-filtered.fr
-    #     transforms: [sentencepiece, prefix, suffix, filtertoolong]
-    #     weight: 10
-    #     src_prefix: "</s> dyu_Latn"
-    #     tgt_prefix: "fra_Latn"
-    #     src_suffix: ""
-    #     tgt_suffix: ""
+    valid:
+        path_src: "/root/zindi-nmt/data/dyu_val_V1.txt"
+        path_tgt: "/root/zindi-nmt/data/fra_val_V1.txt"
+        transforms: [sentencepiece, prefix, suffix, filtertoolong]
+        weight: 10
+        src_prefix: "dyu_Latn"
+        tgt_prefix: "fra_Latn"
+        src_suffix: "</s>"
+        tgt_suffix: ""
 update_vocab: true
-train_from: "/root/zindi-nmt/models/nllb-200-600M-onmt.pt"
+train_from: "/root/zindi-nmt/models/nllb-200-600M-zindi_V21_step_500.pt"
 reset_optim: all
 save_data: "/root/zindi-nmt/train/"
-save_model: "/root/zindi-nmt/models/nllb-200-600M-zindi_V17"
-log_file: "/root/zindi-nmt/logs/trainnllb-200-600M-zindi_V17.log"
+save_model: "/root/zindi-nmt/models/nllb-200-600M-zindi_V22"
+log_file: "/root/zindi-nmt/logs/trainnllb-200-600M-zindi_V22.log"
 keep_checkpoint: 3
-save_checkpoint_steps: 250
+save_checkpoint_steps: 500
 average_decay: 0.0005
 seed: 1234
 report_every: 10
 train_steps: 10000
-# valid_steps: 100
+valid_steps: 100
 # Batching
 bucket_size: 65536
-# bucket_size: 64
+# bucket_size: 32
 num_workers: 4
 prefetch_factor: 200
 world_size: 1
 gpu_ranks: [0]
 batch_type: "tokens"
-batch_size: 13184
-# valid_batch_size: 8
+batch_size: 3072
+valid_batch_size: 1024
 batch_size_multiple: 1
 accum_count: [8, 8, 8]
 accum_steps: [0, 15000, 30000]
@@ -72,7 +72,6 @@ decay_method: "noam"
 adam_beta2: 0.98
 max_grad_norm: 0
 label_smoothing: 0.1
-
 param_init: 0
 param_init_glorot: true
 normalization: "tokens"
@@ -83,15 +82,15 @@ encoder_type: transformer
 decoder_type: transformer
 enc_layers: 12
 dec_layers: 12
-heads: 8
+heads: 16
 hidden_size: 1024
 word_vec_size: 1024
 transformer_ff: 1024
 add_qkvbias: true
 add_ffnbias: true
 dropout_steps: [0, 15000, 30000]
-dropout: [0.7, 0.7, 0.7]
-attention_dropout: [0.5, 0.5, 0.5]
+dropout: [0.1, 0.1, 0.1]
+attention_dropout: [0.1, 0.1, 0.1]
 share_decoder_embeddings: true
 share_embeddings: true
 position_encoding: true
@@ -102,7 +101,7 @@ src_seq_length: 130
 src_seq_length: 130
 
 # Stop training if it does not imporve after n validations
-# early_stopping: 10
+early_stopping: 15
 
 # Use standard scaled dot-product attention
 self_attn_type: scaled-dot

@@ -8,8 +8,8 @@ git clone https://github.com/OpenNMT/OpenNMT-py.git
 cd OpenNMT-py
 pip install -e .
 cd ..
-git config user.name "Rana Banerjee"
-git config user.email "rana1224@gmail.com"
 cd models
 pip install gdown
 gdown 'https://drive.google.com/uc?id=1kK7MJnuLJqoEKtJ09138enIKkZNduMLP'
+git config user.name "Rana Banerjee"
+git config user.email "rana1224@gmail.com"
